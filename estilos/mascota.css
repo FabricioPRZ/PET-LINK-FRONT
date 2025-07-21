@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #FFF9E9;
+            color: #333;
+        }
+
+
+        .titulo-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 0;
+            margin-top: 5px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 1.5rem;
+            color: #005e63;
+            font-weight: 700;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        .titulo-seccion .linea {
+            flex: 1;
+            border: none;
+            height: 5px;
+            background-color: #9fc2c1;
+            max-width: 4000px;
+            margin-left: 0%;
+            margin-right: 0%;
+        }
+
+        .main-card {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: -0.15rem;
+        }
+
+        .images {
+            flex: 1;
+            min-width: 250px;
+            margin-top: -5px;
+            margin-left: 170px;
+        }
+
+        .main-img {
+            width: 100%;
+            max-width: 342PX;
+            border-radius: 10px;
+        }
+
+        .thumbs img {
+            width: 167.5px;
+            margin-top: 3px;
+            margin-right: 4px;
+            border-radius: 6px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            justify-content: center;
+            margin-right: 18rem;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top:  -1.4rem;
+        }
+
+        .nombreicon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 1.7rem;
+            color: #053A42;
+            font-weight: bold;
+            margin-right: 15px;
+            font-family: 'Fredoka', sans-serif;
+            margin-top: -14px;
+        }
+
+        .iconpatita {
+            width: 60px;
+            height: 40px;
+            border-radius: 50%;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px 100px;
+            margin-bottom: 40px;
+            font-family: 'Poppins', sans-serif;
+            margin-top: -25px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .info-label {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .vaccines-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .vaccines-list li {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .vaccines-list li::before {
+            content: '•';
+            color: #666;
+            position: absolute;
+            left: 0;
+        }
+
+        .adopt-button {
+            background-color: #009FB9;
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 2.5px solid #005e63;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+            margin-top: -8px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .adopt-button:hover {
+            background-color: #FFF9E9;
+            color: #005e63
+        }
+
+        .adopt-button:active {
+            transform: translateY(1px);
+        }
+
+.otras .linea{
+  flex: 1;
+  border: none;
+  height: 5px;
+  background-color: #9fc2c1;
+  max-width: 4000px;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 50px;
+}
+
+.otras h2{
+  font-family: 'Mulish', sans-serif;
+  color: #006272;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.carousel-container h2 {
+  font-family: 'Fredoka', sans-serif;
+  text-align: center;
+  color: #006272;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FFD8B6;
+  color: #e36414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #F08224;
+  transform: scale(1.1);
+}
+
+.nav-arrow.left {
+  position: absolute;
+  left: 10px;
+}
+
+.nav-arrow.right {
+  position: absolute;
+  right: 10px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 0;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-left: 70px;
+}
+
+.pet-card {
+  background-color: #FFF9E9;
+  background-image: linear-gradient(rgba(255, 249, 135, 0.1), rgba(255, 249, 135, 0.1)), 
+    url("/Iconos/Petlink_fondo_huellas.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  border: 3px solid #DC6E10;
+  border-radius: 20px;
+  padding: 15px;
+  min-width: 180px;
+  max-width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.pet-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.pet-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.pet-info-row {
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.pet-info-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 60px;
+}
+
+.pet-info-value {
+  color: #666;
+  margin-left: 10px;
+}
+
+.pet-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 6px 9px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-info {
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+  width: 80px;
+  height: 30px;
+}
+
+.btn-info:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #006272;
+  color: #053A42;
+}
+
+.btn-adopt {
+  background-color: #F08224;
+  border: 1.8px solid #954806;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+  width: 80px;
+  height: 30px;
+}
+
+.btn-adopt:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #954806;
+  color: #954806;
+}
+
+.know-more-btn {
+  color: white;
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  width: 180px;
+  height: 50px;
+  padding: 5px 15px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+  margin-bottom: 90px;
+}
+
+.know-more-btn:hover {
+  background-color: #26a3b4;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .nav-arrow.left {
+    left: 5px;
+  }
+
+  .nav-arrow.right {
+    right: 5px;
+  }
+
+  .cards-container {
+    padding: 10px 20px;
+  }
+}

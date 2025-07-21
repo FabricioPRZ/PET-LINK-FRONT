@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFF9E9;
+    color: #333;
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    margin-top: 5px;
+}
+
+.titulo-seccion h2 {
+    font-size: 1.5rem;
+    color: #005e63;
+    font-weight: 700;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.titulo-seccion .linea {
+    flex: 1;
+    border: none;
+    height: 5px;
+    background-color: #9fc2c1;
+    max-width: 4000px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.main-card {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -0.15rem;
+}
+
+.images {
+    flex: 1;
+    min-width: 250px;
+    margin-top: -5px;
+    margin-left: 170px;
+}
+
+.main-img {
+    width: 100%;
+    max-width: 342PX;
+    border-radius: 10px;
+}
+
+.thumbs img {
+    width: 167.5px;
+    margin-top: 3px;
+    margin-right: 4px;
+    border-radius: 6px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-content: center;
+    margin-right: 18rem;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: -2.5rem;
+    position: relative;
+    padding-top: 50px;
+}
+
+.nombreicon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.7rem;
+    color: #053A42;
+    font-weight: bold;
+    margin-right: 15px;
+    font-family: 'Fredoka', sans-serif;
+    margin-top: -14px;
+}
+
+.edit-icon {
+    position: absolute;
+    right: -94px;
+    top: 50px;
+}
+
+.edit-icon img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.iconpatita {
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    margin-left: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px 100px;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: -1px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.info-label {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.vaccines-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.vaccines-list li {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.vaccines-list li::before {
+    content: '•';
+    color: #666;
+    position: absolute;
+    left: 0;
+}
+
+.action-buttons {
+    margin-right: -15px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 30px;
+    margin-left: 105px;
+}
+
+.publish-button, .delete-button {
+    height: 40px;
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+}
+
+.publish-button {
+   background-color: #F08224;
+   border: 1.8px solid #954806;
+   border-radius: 12px;
+   color: white;
+   width: 20px;
+}
+
+.delete-button {
+    background-color: #009FB9;
+    border: 1.8px solid #053A42;
+    border-radius: 12px;
+    color: white;
+}
+
+.publish-button:hover {
+    background-color: #FFF9E9;
+    color: #954806;
+}
+
+.delete-button:hover {
+    background-color: #FFF9E9;
+    color: #053A42;
+}
+
+.adopt-button {
+    background-color: #009FB9;
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 2.5px solid #005e63;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+    margin-top: -8px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.adopt-button:hover {
+    background-color: #FFF9E9;
+    color: #005e63
+}
+
+.adopt-button:active {
+    transform: translateY(1px);
+}

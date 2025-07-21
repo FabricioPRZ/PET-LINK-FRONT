@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #FFF9E9;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.hero {
+  background-image: url("./Iconos/PerritoInicio.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%; /* ← Antes auto */
+  height: 1000px;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-end;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.hero-text {
+  text-align: center;
+  justify-content: flex-end;
+  display: grid;
+  margin-right: 150px;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-family: 'Fredoka', sans-serif;
+  color: #053A42;
+  font-size: 55px;
+  margin-bottom: 1rem;
+  display: flex-start;
+}
+
+.hero-text p {
+  margin-bottom: 1rem;
+  font-size: 25px;
+  color: #053A42;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  display: flex-start;
+}
+
+.btns {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+
+}
+
+.btns .btn {
+  text-decoration: none;
+  margin-right: 1rem;
+  padding: 14px 50px;
+  border: 1.8px solid #006272;
+  border-radius: 19px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+}
+
+.btn.primary {
+  background-color: #009FB9;
+  color: #FFFFFF;
+}
+
+.btn.secondary {
+  background-color: #009fb9;
+  color: white;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.carousel-container h2 {
+  font-family: 'Fredoka', sans-serif;
+  text-align: center;
+  color: #006272;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FFD8B6;
+  color: #e36414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #F08224;
+  transform: scale(1.1);
+}
+
+.nav-arrow.left {
+  position: absolute;
+  left: 10px;
+}
+
+.nav-arrow.right {
+  position: absolute;
+  right: 10px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 0;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-left: 70px;
+}
+
+.pet-card {
+  background-color: #FFF9E9;
+  background-image: linear-gradient(rgba(255, 249, 135, 0.1), rgba(255, 249, 135, 0.1)), 
+    url("./Iconos/Petlink_fondo_huellas.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  border: 3px solid #DC6E10;
+  border-radius: 20px;
+  padding: 15px;
+  min-width: 180px;
+  max-width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.pet-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.pet-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.pet-info-row {
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.pet-info-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 60px;
+}
+
+.pet-info-value {
+  color: #666;
+  margin-left: 10px;
+}
+
+.pet-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 6px 9px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-info {
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+  width: 80px;
+  height: 30px;
+}
+
+.btn-info:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #006272;
+  color: #053A42;
+}
+
+.btn-adopt {
+  background-color: #F08224;
+  border: 1.8px solid #954806;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+  width: 80px;
+  height: 30px;
+}
+
+.btn-adopt:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #954806;
+  color: #954806;
+}
+
+.know-more-btn {
+  color: white;
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  width: 180px;
+  height: 50px;
+  padding: 5px 15px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+  margin-bottom: 90px;
+}
+
+.know-more-btn:hover {
+  background-color: #26a3b4;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .nav-arrow.left {
+    left: 5px;
+  }
+
+  .nav-arrow.right {
+    right: 5px;
+  }
+
+  .cards-container {
+    padding: 10px 20px;
+  }
+}
+
+.stats {
+  background-color: #D6EFED;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.stats h2 {
+  font-family: 'Fredoka', sans-serif;
+  color: #053A42;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.stats-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5rem;
+  padding: 50px 0;
+}
+
+.stats .graph {
+  max-width: 400px;
+  margin-left: 0;
+}
+
+.stats-content .text p {
+  position: relative;
+  top: -20px; 
+  margin-bottom: 30px;
+  font-family: 'Fredoka', sans-serif;
+  color: #006272;
+  font-size: 25px;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.stats .counter {
+  position: relative;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #053A42;
+  margin-left: 120px;
+  z-index: 1;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.stats .counter::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 17%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background-color: rgba(131, 194, 204, 80); 
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.stats .counter .text {
+  margin-left: -105px;
+  display: inline-block;
+}
+
+.help {
+  background-color: #FFE1BF;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.help p {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  color: #C76919;
+  margin-top: -120px;
+  margin-right: -18rem;
+}
+
+.help img {
+  margin-left: -30rem;
+  margin-top: -50px;
+}
+
+.help h2 {
+  color: #C76919;
+  margin-bottom: 4rem;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.help h4 {
+  color: #C76919;
+  margin-top: 83px;
+  margin-bottom: 30px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: -25rem
+}
+
+.help .contact ul {
+  list-style: none;
+  margin-top: -7rem;
+  margin-right: -55rem;
+  color: #C76919;
+  font-weight: 500;
+}
+
+.help .contact li {
+  margin: 0.5rem 0;
+}
+
+.footer .petlinkfooter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.footer .petlinkfooter .contact-info img {
+  height: 7rem;
+  width: 13rem;
+  margin-left: -5rem;
+  margin-top: 1.5rem;
+} 
+
+
+.footer .petlinkfooter .nav-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 15rem;
+}
+
+.footer .petlinkfooter .nav-links a {
+  font-family: 'Mulish', sans-serif;
+  color: #954806;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .petlinkfooter .nav-links a:hover {
+  color: #663304;
+  text-decoration: underline;
+}
+
+
+.footer .petlinkfooter .logo-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer .petlinkfooter .logo-section img {
+  width: 80px;
+  height: 80px;
+  margin-right: -30rem;
+}
+
+.footer .petlinkfooter .logo-section .legal-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: -30rem;
+}
+
+.footer .petlinkfooter .logo-section .legal-links a {
+  font-family: 'Mulish', sans-serif;
+  color: #954806;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .petlinkfooter .logo-section .legal-links a:hover {
+  color: #663304;
+  text-decoration: underline;
+}

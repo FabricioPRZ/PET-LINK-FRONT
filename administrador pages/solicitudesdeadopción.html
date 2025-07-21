@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formularios de adopción de mascotas</title>
+  <link rel="stylesheet" href="/administrador css/solicitudesdeadopción.css" />
+  <script src="/header.js" defer></script>
+</head>
+<body>
+  <petlink-header></petlink-header>
+
+  <main>
+    <h1>Solicitudes de adopción de Mascotas</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr class="header-row">
+            <th>#</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Fecha de envío</th>
+            <th>Estatus</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tbodySolicitudes">
+          <tr>
+            <td colspan="7">Cargando solicitudes...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="/scriptsAdmi/solicitudesdeadopción.js"></script>
+</body>
+</html>

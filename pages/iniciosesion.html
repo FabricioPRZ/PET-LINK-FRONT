@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PetLink - Iniciar sesión</title>
+  <link rel="stylesheet" href="/estilos/iniciosesion.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class='logo-circle'>
+        <img class="logo-svg" src="/Iconos/Logo PetLink.svg" alt="PetLink Logo">
+      </div>
+      <h3>PetLink</h3>
+    </div>
+    <div class="form-content">
+      <img src="/Iconos/iconoU.png">
+      <h2>Iniciar Sesión</h2>
+      <div class="formulario">
+        <form id="loginForm">
+          <input type="email" id="correo" placeholder="Correo electrónico" required>
+          <input type="password" id="contraseña" placeholder="Contraseña" required>
+          <div class="checkbox-container">
+            <label>
+              <input type="checkbox" id="recordar">
+              <span>Recordar</span>
+            </label>
+          </div>
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/scripts/iniciosesion.js"></script>
+</body>
+</html>

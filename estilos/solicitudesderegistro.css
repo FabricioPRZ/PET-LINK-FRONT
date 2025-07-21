@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  background-color: #FFF8E7;
+  color: #083d4c;
+}
+
+
+/* Título */
+main h1 {
+  text-align: center;
+  margin: 3rem 3rem;
+  font-size: 35px;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 0;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.pet-card {
+  background-color: #FFF9E9;
+  background-image: linear-gradient(rgba(255, 249, 135, 0.1), rgba(255, 249, 135, 0.1)), 
+    url("/Iconos/Petlink_fondo_huellas.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  border: 3px solid #DC6E10;
+  border-radius: 20px;
+  padding: 15px;
+  min-width: 180px;
+  max-width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.pet-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.pet-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.pet-info-row {
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.pet-info-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 60px;
+}
+
+.pet-info-value {
+  color: #666;
+  margin-left: 10px;
+}
+
+.pet-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 6px 9px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-status {
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  width: 140px;
+  height: 30px;
+}
+
+.btn-status:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #006272;
+  color: #053A42;
+}

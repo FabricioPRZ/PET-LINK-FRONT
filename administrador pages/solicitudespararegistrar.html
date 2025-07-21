@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formularios para registrar mascotas</title>
+  <link rel="stylesheet" href="/administrador css/solicitudespararegistrar.css">
+  <script src="/header.js" defer></script>
+</head>
+<body>
+  <petlink-header></petlink-header>
+
+  <main>
+    <h1>Solicitudes para registrar mascotas</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr class="header-row">
+            <th>#</th>
+            <th>Usuario</th>
+            <th>Mascota solicitada</th>
+            <th>Fecha de envío</th>
+            <th>Estatus</th>
+            <th colspan="2">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-odd">
+            <td>1</td>
+            <td>Caba Antonio</td>
+            <td>Marina(Gato)</td>
+            <td>23/06/2025</td>
+            <td>Pendiente</td>
+            <td><button class="badge aprobado">Aprobar</button></td>
+            <td><button class="badge rechazado">Rechazar</button></td>
+          </tr>
+          <tr class="row-even">
+            <td>2</td>
+            <td>Ariana López</td>
+            <td>Caramelo(Pez)</td>
+            <td>03/05/2025</td>
+            <td>Aprobada</td>
+            <td><button class="badge aprobado">Aprobar</button></td>
+            <td><button class="badge rechazado">Rechazar</button></td>
+          </tr>
+          <tr class="row-odd">
+            <td>3</td>
+            <td>Karolina Trujillo</td>
+            <td>Peluchin(Perro)</td>
+            <td>20/05/2025</td>
+            <td>Rechazada</td>
+            <td><button class="badge aprobado">Aprobar</button></td>
+            <td><button class="badge rechazado">Rechazar</button></td>
+          </tr>
+          <tr class="row-even">
+            <td>4</td>
+            <td>Valeria Cruz</td>
+            <td>Teo(Tortuga)</td>
+            <td>17/06/2025</td>
+            <td>Aprobada</td>
+            <td><button class="badge aprobado">Aprobar</button></td>
+            <td><button class="badge rechazado">Rechazar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

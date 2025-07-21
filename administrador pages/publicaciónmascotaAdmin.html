@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PetLink - Panel Mascota</title>
+  <link rel="stylesheet" href="/administrador css/publicaciónmascotaAdmin.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="/scriptsAdmi/publicarmascota.js" defer></script>
+  <script src="/header.js" defer></script>
+</head>
+<body>
+  <petlink-header></petlink-header>
+
+  <main>
+    <div class="titulo-seccion">
+      <hr class="linea" />
+      <h2>Mascotas</h2>
+      <hr class="linea" />
+    </div>
+
+    <section class="main-card">
+      <div class="images">
+        <img src="" alt="Imagen principal" class="main-img" id="imagenPrincipal" />
+        <div class="thumbs" id="imagenesMiniatura">
+          <!-- Miniaturas dinámicas -->
+        </div>
+      </div>
+
+      <div class="profile-container">
+        <div class="edit-icon" id="toggleEdicion">
+          <img src="/Iconos/lápiz.png" alt="Editar">
+        </div>
+
+        <div class="nombreicon">
+          <h1 id="nombreMascota">—</h1>
+          <img src="/Iconos/patita.png" class="iconpatita" alt="">
+        </div>
+
+        <div class="info-grid">
+          <!-- Cada campo editable se muestra como texto o como input según modo -->
+          <div class="info-item"><div class="info-label">Especie:</div><div class="info-value" id="especieMascota">—</div></div>
+          <div class="info-item"><div class="info-label">Sexo:</div><div class="info-value" id="sexoMascota">—</div></div>
+          <div class="info-item"><div class="info-label">Desparasitado:</div><div class="info-value" id="desparasitado">—</div></div>
+          <div class="info-item"><div class="info-label">Tamaño:</div><div class="info-value" id="tamanoMascota">—</div></div>
+          <div class="info-item"><div class="info-label">Discapacidades:</div><div class="info-value" id="discapacitado">—</div></div>
+          <div class="info-item"><div class="info-label">Enfermedades:</div><div class="info-value" id="enfermedades">—</div></div>
+          <div class="info-item"><div class="info-label">Peso:</div><div class="info-value" id="pesoMascota">—</div></div>
+          <div class="info-item"><div class="info-label">Tratamientos:</div><div class="info-value" id="tratamientos">—</div></div>
+          <div class="info-item"><div class="info-label">Esterilizado:</div><div class="info-value" id="esterilizado">—</div></div>
+          <div class="info-item full-width">
+            <div class="info-label">Vacunas:</div>
+            <ul class="vaccines-list" id="listaVacunas">
+              <!-- Vacunas insertadas aquí -->
+            </ul>
+          </div>
+          <div class="info-item full-width">
+            <div class="info-label">Descripción:</div>
+            <div class="info-value" id="descripcionMascota">—</div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="publish-button" id="btnCrear">Publicar</button>
+          <button class="publish-button" id="btnActualizar">Actualizar</button>
+          <button class="delete-button" id="btnEliminar">Eliminar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

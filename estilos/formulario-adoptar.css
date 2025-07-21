@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #FFF9E9;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.datos-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+h1{
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    color: #053A42;
+    font-size: 64px;
+    line-height: 45px;
+    letter-spacing: 3px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+h2{
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    color: #053A42;
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: 3px;
+    text-align: left;
+}
+
+
+.form{
+    display: flex;
+    gap: 85px;
+}
+
+
+.form input, select, textarea {
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 600px;
+    display: flex;
+}
+
+
+label{
+    font-family: 'Fredoka', sans-serif;
+    color: #009FB9;
+    font-size: 30px;
+    line-height: 45px;
+    letter-spacing: 3px;
+}
+
+.apellidos{
+    display: flex;
+    gap: 15px;
+}
+
+
+.apellido-paterno input{
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 285px;
+    display: flex;
+    gap: 48px;
+   
+}
+
+.apellido-materno input{
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 300px;
+    display: flex;
+    gap: 48px;
+   
+}
+
+
+
+.form-edad{
+    display: flex;
+
+}
+
+.edad-inputs{
+    display: flex;
+    gap: 34px;
+}
+
+
+
+
+
+
+.edad input{
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 234px;
+}
+
+
+.form-vivienda{
+    display: flex;
+    gap: 85px;
+}
+
+
+.form-vive{
+    display: flex;
+    gap: 85px;
+}
+
+
+.form-tittles{
+    display: flex;
+    gap: 190px;
+}
+
+
+::placeholder{
+    font-family: 'poppins';
+    color: #FEE2C2;
+    font-size: 25px;
+    text-align: center;
+    line-height: 45px;
+}
+
+
+.form-apellidos input[type="file"]::file-selector-button{
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 600px;
+}
+
+
+.form-edad input[type="file"]::file-selector-button{
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    height: 54px;
+    width: 335px;
+    display: flex;
+}
+
+
+
+
+.adoptar-boton{
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 40px;
+}
+
+
+.adoptar-boton a{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    border: solid;
+    border-color: #006272;
+    border-radius: 15px;
+    border-width: 1.8px;
+    padding: 10px 15px;
+    background: #009FB9;
+    line-height: 24px;
+    letter-spacing: 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-status {
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  border-radius: 12px;
+  color: white;
+  font-size: 25px;
+}
+
+.btn-status:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #006272;
+  color: #053A42;
+}
+
+
+
+/* Estilos para los selects */
+select.styled-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F08224'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 24px;
+    padding-right: 40px;
+    color: #FEE2C2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    cursor: pointer;
+    text-align: center;
+}
+
+select.styled-select option {
+    color: #F08224;
+    font-size: 25px;
+    padding: 10px;
+}
+
+select.styled-select:focus {
+    outline: none;
+}
+
+select.styled-select:invalid {
+    color: #FEE2C2;
+}
+
+/* Estilo para el dropdown del select */
+select.styled-select option {
+    background-color: white;
+}
+
+select.styled-select option:hover {
+    background-color: #FFF9E9;
+}
+
+
+/*CHATGPT 
+/* Estilos para los inputs de archivo */
+.file-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.file-input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 3px solid #F08224;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 54px;
+    width: 100%;
+}
+
+.upload-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.file-input-label span {
+    font-family: 'Poppins', sans-serif;
+    color: #FEE2C2;
+    font-size: 25px;
+}
+
+/* Ajustes específicos para el layout */
+.form-apellidos {
+    display: flex;
+    gap: 85px;
+
+}
+
+
+.espacio-mascota {
+    width: 100%;
+}
+
+.espacio-mascota .file-input-container {
+    width: 600px;
+}
+
+.form-edad {
+    display: flex;
+    gap: 85px;
+}
+
+.edad {
+    display: flex;
+    flex-direction: column;
+}
+
+.edad input {
+    width: 234px;
+}
+
+.ine-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.ine-input .file-input-container {
+    width: 335px;
+}
+
+/* Ajuste para el título de entorno familiar */
+.form-edad h2 {
+    width: 100%;
+}

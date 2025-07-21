@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFF9E9;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.dar-en-adopcion-display{
+
+}
+
+.dar-en-adopcion-display img{
+    width: 130px;
+    height: 500px;
+    position: absolute;
+    left: 12%;
+    top: 77%;
+    padding-bottom: 50px;
+}
+
+.dar-en-adopcion-principal{
+    padding-top: 60px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-bottom: 30px;
+
+}
+
+.dar-en-adopcion-contenido{
+    border: solid;
+    border-color: #F08224;
+    border-width: 5px;
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dar-en-adopcion-tittle p{
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    color: #009FB9;
+    font-size: 64px;
+    line-height: 56px;
+    letter-spacing: 3px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+
+.dar-en-adopcion-texto{
+
+}
+
+.dar-en-adopcion-texto p{
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    color: #053A42;
+    font-size: 32px;
+    text-align: center;
+    line-height: 56px;
+    letter-spacing: 3px;
+    padding-bottom: 40px;
+
+}
+
+.dar-en-adopcion-boton{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.dar-en-adopcion-boton a{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    border: solid;
+    border-color: #006272;
+    border-radius: 15px;
+    border-width: 1.8px;
+    padding: 10px 15px;
+    background: #009FB9;
+    line-height: 24px;
+    letter-spacing: 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-status {
+  background-color: #009FB9;
+  border: 1.8px solid #006272;
+  border-radius: 12px;
+  color: white;
+  font-size: 25px;
+}
+
+.btn-status:hover {
+  background-color: #FFF9E9;
+  border: 1.8px solid #006272;
+  color: #053A42;
+}

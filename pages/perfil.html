@@ -1,35 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLink - Perfil</title>
     <link rel="stylesheet" href="/estilos/perfil.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
     <script src="/header.js" defer></script>
 </head>
 <body>
-    <script src="java/perfil.js" type="module"></script>
+    <script src="/js/perfil.js" type="module"></script>
     <petlink-header></petlink-header>
-    <div class="perfil-tittle"><p>Perfil</p></div>
-    <section class="perfil-contenido">
-    <div class="inf-perfil">
-        <img class="user_icon" src="/Iconos/user_icon.svg" alt="user icon">
-        <div class="inf-user">
-        <p>Nombre:</p>
-        <br>
-        <p>Nombre de usuario:</p>
-        <br>
-        <p>Información de contacto:</p>
-        </div>
+    
+    <div class="perfil-tittle">
+        <p>Perfil</p>
     </div>
+    
+    <section class="perfil-contenido">
+        <div class="inf-perfil">
+            <img class="user_icon" src="/Iconos/user_icon.svg" alt="user icon">
+            <div class="inf-user">
+                <p>Cargando información del perfil...</p>
+            </div>
+        </div>
     </section>
+    
     <section class="opciones-perfil">
-        <a class="btn btn-status" href="#Editar perfil">Editar perfil</a>
-        <a class="btn btn-status" href="#Solicitudes de registro">Solicitudes de registro</a>
-        <a class="btn btn-status" href="#Solicitudes de adopción">Solicitudes de adopción</a>
+        <a class="btn btn-status" href="#" data-accion="editar">Editar perfil</a>
         <a class="btn btn-status" href="INE.html">Ver identificación</a>
     </section>
-    </main>
+
+    <div id="modal-editar" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form id="form-editar-perfil">
+                <div class="form-group">
+                    <label for="nombres">Nombres:</label>
+                    <input type="text" id="nombres" name="nombres" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido_paterno">Apellido Paterno:</label>
+                    <input type="text" id="apellido_paterno" name="apellido_paterno" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido_materno">Apellido Materno:</label>
+                    <input type="text" id="apellido_materno" name="apellido_materno">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-guardar">Guardar Cambios</button>
+                    <button type="button" class="btn btn-cancelar cerrar-modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

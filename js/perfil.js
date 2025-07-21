@@ -1,185 +1,221 @@
-// perfil.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Elementos del DOM
-    const userIcon = document.querySelector('.user_icon');
-    const userNameElement = document.querySelector('.inf-user p:nth-child(1)');
-    const userUsernameElement = document.querySelector('.inf-user p:nth-child(3)');
-    const userContactElement = document.querySelector('.inf-user p:nth-child(5)');
-    const editProfileBtn = document.querySelector('a[href="#Editar perfil"]');
-    const registrationRequestsBtn = document.querySelector('a[href="#Solicitudes de registro"]');
-    const adoptionRequestsBtn = document.querySelector('a[href="#Solicitudes de adopción"]');
-    const viewINEBtn = document.querySelector('a[href="INE.html"]');
-
-    // Datos del usuario (simulados - en un caso real se obtendrían de la API)
-    let userData = {
-        id: null,
-        nombres: '',
-        apellido_paterno: '',
-        apellido_materno: '',
-        correo: '',
-        tipo_usuario: '',
-        INE: null
-    };
-
-    // Función para cargar los datos del usuario desde la API
-    async function loadUserProfile() {
-        try {
-            // Obtener el ID del usuario de la sesión o localStorage
-            const userId = localStorage.getItem('userId');
-            if (!userId) {
-                window.location.href = 'login.html'; // Redirigir si no hay sesión
-                return;
-            }
-
-            // Hacer la petición a la API
-            const response = await fetch(`http://localhost:8080/usuario/${userId}`);
-            
-            if (!response.ok) {
-                throw new Error('Error al cargar los datos del usuario');
-            }
-
-            const data = await response.json();
-            userData = data;
-
-            // Actualizar la interfaz
-            updateProfileUI();
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error al cargar los datos del perfil');
-        }
-    }
-
-    // Función para actualizar la interfaz con los datos del usuario
-    function updateProfileUI() {
-        userNameElement.textContent = `Nombre: ${userData.nombres} ${userData.apellido_paterno} ${userData.apellido_materno}`;
-        userUsernameElement.textContent = `Nombre de usuario: ${userData.correo}`; // Usamos el correo como nombre de usuario
-        userContactElement.textContent = `Información de contacto: ${userData.correo}`;
-    }
-
-    // Función para manejar la edición del perfil
-    function setupEditProfile() {
-        editProfileBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Crear formulario de edición
-            const editForm = document.createElement('div');
-            editForm.innerHTML = `
-                <div class="edit-form" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000;">
-                    <div style="background: white; padding: 20px; border-radius: 10px; width: 500px;">
-                        <h2 style="color: #009FB9; margin-bottom: 20px;">Editar Perfil</h2>
-                        <form id="profileForm">
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; margin-bottom: 5px; color: #053A42;">Nombres:</label>
-                                <input type="text" id="editNombres" value="${userData.nombres}" style="width: 100%; padding: 8px; border: 1px solid #F08224; border-radius: 5px;">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; margin-bottom: 5px; color: #053A42;">Apellido Paterno:</label>
-                                <input type="text" id="editApellidoPaterno" value="${userData.apellido_paterno}" style="width: 100%; padding: 8px; border: 1px solid #F08224; border-radius: 5px;">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; margin-bottom: 5px; color: #053A42;">Apellido Materno:</label>
-                                <input type="text" id="editApellidoMaterno" value="${userData.apellido_materno}" style="width: 100%; padding: 8px; border: 1px solid #F08224; border-radius: 5px;">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; margin-bottom: 5px; color: #053A42;">Correo:</label>
-                                <input type="email" id="editCorreo" value="${userData.correo}" style="width: 100%; padding: 8px; border: 1px solid #F08224; border-radius: 5px;">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; margin-bottom: 5px; color: #053A42;">Contraseña (dejar vacío para no cambiar):</label>
-                                <input type="password" id="editPassword" style="width: 100%; padding: 8px; border: 1px solid #F08224; border-radius: 5px;">
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                                <button type="button" id="cancelEdit" style="padding: 8px 15px; background: #F08224; color: white; border: none; border-radius: 5px; cursor: pointer;">Cancelar</button>
-                                <button type="submit" style="padding: 8px 15px; background: #009FB9; color: white; border: none; border-radius: 5px; cursor: pointer;">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(editForm);
-            
-            // Manejar el envío del formulario
-            document.getElementById('profileForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const updatedData = {
-                    nombres: document.getElementById('editNombres').value,
-                    apellido_paterno: document.getElementById('editApellidoPaterno').value,
-                    apellido_materno: document.getElementById('editApellidoMaterno').value,
-                    correo: document.getElementById('editCorreo').value
-                };
-                
-                const newPassword = document.getElementById('editPassword').value;
-                if (newPassword) {
-                    updatedData.contraseña = newPassword;
-                }
-                
-                try {
-                    const response = await fetch(`http://localhost:8080/usuario/${userData.id_usuario}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(updatedData)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error('Error al actualizar el perfil');
-                    }
-                    
-                    // Actualizar los datos locales y la UI
-                    userData = { ...userData, ...updatedData };
-                    updateProfileUI();
-                    
-                    // Cerrar el formulario
-                    document.body.removeChild(editForm);
-                    alert('Perfil actualizado correctamente');
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Error al actualizar el perfil');
-                }
-            });
-            
-            // Manejar el botón de cancelar
-            document.getElementById('cancelEdit').addEventListener('click', function() {
-                document.body.removeChild(editForm);
-            });
-        });
-    }
-
-    // Función para manejar las solicitudes de registro
-    function setupRegistrationRequests() {
-        registrationRequestsBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Aquí iría la lógica para mostrar las solicitudes de registro
-            alert('Funcionalidad de solicitudes de registro en desarrollo');
-        });
-    }
-
-    // Función para manejar las solicitudes de adopción
-    function setupAdoptionRequests() {
-        adoptionRequestsBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Aquí iría la lógica para mostrar las solicitudes de adopción
-            alert('Funcionalidad de solicitudes de adopción en desarrollo');
-        });
-    }
-
-    // Función para manejar la visualización de la INE
-    function setupViewINE() {
-        viewINEBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // La INE se mostrará en la página INE.html
-            // Podríamos pasar el ID del usuario como parámetro
-            window.location.href = `INE.html?userId=${userData.id_usuario}`;
-        });
-    }
-
-    // Inicialización
-    loadUserProfile();
-    setupEditProfile();
-    setupRegistrationRequests();
-    setupAdoptionRequests();
-    setupViewINE();
+document.addEventListener('DOMContentLoaded', async function() {
+    const userId = obtenerIdUsuario();
+    
+    await cargarDatosUsuario(userId);
+    agregarEventListenersABotones();
+    configurarModal();
 });
+
+// Función para obtener el ID del usuario
+function obtenerIdUsuario() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userIdFromUrl = urlParams.get('userId');
+    const userIdFromStorage = localStorage.getItem('userId');
+    const userIdFromSession = sessionStorage.getItem('userId');
+    return userIdFromUrl || userIdFromStorage || userIdFromSession || 1;
+}
+
+// Función para cargar los datos del usuario
+async function cargarDatosUsuario(userId) {
+    try {
+        mostrarCargando(true);
+        
+        const response = await fetch(`http://44.208.231.53:7078/usuarios/${userId}`);
+        
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+        
+        const userData = await response.json();
+        
+        mostrarDatosEnPerfil(userData);
+        precargarFormularioEdicion(userData);
+        
+    } catch (error) {
+        console.error('Error al cargar datos del usuario:', error);
+        mostrarError('No se pudieron cargar los datos del perfil. Inténtalo de nuevo.');
+    } finally {
+        mostrarCargando(false);
+    }
+}
+
+// Función para mostrar los datos en el perfil
+function mostrarDatosEnPerfil(userData) {
+    const infUser = document.querySelector('.inf-user');
+    
+    const nombreCompleto = `${userData.nombres} ${userData.apellido_paterno} ${userData.apellido_materno || ''}`.trim();
+    
+    infUser.innerHTML = `
+        <p>Nombre: <span style="color: #F08224;">${nombreCompleto}</span></p>
+        <br>
+        <p>Correo: <span style="color: #F08224;">${userData.correo}</span></p>
+        <br>
+        <p>Estado: <span style="color: #F08224;">Usuario ${userData.tipo_usuario === 'user' ? 'Regular' : 'Administrador'}</span></p>
+    `;
+}
+
+// Función para precargar el formulario de edición
+function precargarFormularioEdicion(userData) {
+    document.getElementById('nombres').value = userData.nombres || '';
+    document.getElementById('apellido_paterno').value = userData.apellido_paterno || '';
+    document.getElementById('apellido_materno').value = userData.apellido_materno || '';
+    document.getElementById('correo').value = userData.correo || '';
+}
+
+// Función para mostrar estado de carga
+function mostrarCargando(mostrar) {
+    const infUser = document.querySelector('.inf-user');
+    
+    if (mostrar) {
+        infUser.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; height: 200px;">
+                <div style="color: #009FB9; font-size: 24px;">
+                    Cargando datos del perfil...
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Función para mostrar errores
+function mostrarError(mensaje) {
+    const infUser = document.querySelector('.inf-user');
+    
+    infUser.innerHTML = `
+        <div style="color: #f44336; font-size: 24px; text-align: center;">
+            <p>❌ ${mensaje}</p>
+            <br>
+            <button onclick="location.reload()" style="
+                background-color: #009FB9; 
+                color: white; 
+                border: none; 
+                padding: 10px 20px; 
+                border-radius: 5px; 
+                cursor: pointer;
+                font-size: 16px;
+            ">
+                Reintentar
+            </button>
+        </div>
+    `;
+}
+
+// Función para configurar los listeners de los botones
+function agregarEventListenersABotones() {
+    const btnVerINE = document.querySelector('a[href="INE.html"]');
+    if (btnVerINE) {
+        btnVerINE.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = `INE.html?userId=${obtenerIdUsuario()}`;
+        });
+    }
+    
+    const botonesOpciones = document.querySelectorAll('.opciones-perfil a');
+    botonesOpciones.forEach(boton => {
+        if (!boton.href.includes('INE.html')) {
+            boton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const accion = this.getAttribute('data-accion');
+                
+                if (accion === 'editar') {
+                    abrirModal();
+                } else {
+                    console.log(`Acción seleccionada: ${accion}`);
+                    mostrarMensajeTemporal(`Función "${accion}" en desarrollo`);
+                }
+            });
+        }
+    });
+}
+
+// Función para configurar el modal
+function configurarModal() {
+    const modal = document.getElementById('modal-editar');
+    const btnCerrar = document.querySelector('.cerrar-modal');
+    const btnCancelar = document.querySelector('.btn-cancelar');
+    const form = document.getElementById('form-editar-perfil');
+    
+    // Función para abrir el modal
+    window.abrirModal = function() {
+        modal.style.display = 'block';
+    }
+    
+    // Función para cerrar el modal
+    function cerrarModal() {
+        modal.style.display = 'none';
+    }
+    
+    // Event listeners para cerrar el modal
+    btnCerrar.addEventListener('click', cerrarModal);
+    btnCancelar.addEventListener('click', cerrarModal);
+    
+    // Cerrar al hacer clic fuera del modal
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            cerrarModal();
+        }
+    });
+    
+    // Manejar envío del formulario
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        await guardarCambios();
+    });
+}
+
+// Función para guardar los cambios del perfil
+async function guardarCambios() {
+    try {
+        const userId = obtenerIdUsuario();
+        const formData = {
+            nombres: document.getElementById('nombres').value,
+            apellido_paterno: document.getElementById('apellido_paterno').value,
+            apellido_materno: document.getElementById('apellido_materno').value,
+            correo: document.getElementById('correo').value
+        };
+        
+        const response = await fetch(`http://44.208.231.53:7078/usuarios/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+        
+        mostrarMensajeTemporal('Cambios guardados exitosamente');
+        document.querySelector('.cerrar-modal').click();
+        
+        // Recargar datos del perfil
+        await cargarDatosUsuario(userId);
+        
+    } catch (error) {
+        console.error('Error al guardar cambios:', error);
+        mostrarMensajeTemporal('Error al guardar cambios', true);
+    }
+}
+
+// Función para mostrar mensajes temporales
+function mostrarMensajeTemporal(mensaje, esError = false) {
+    const div = document.createElement('div');
+    div.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: ${esError ? '#f44336' : '#009FB9'};
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-family: 'Poppins', sans-serif;
+    `;
+    div.textContent = mensaje;
+    document.body.appendChild(div);
+    
+    setTimeout(() => {
+        div.remove();
+    }, 3000);
+}

@@ -36,7 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     alert('¡Inicio de sesión exitoso!');
-    window.location.href = '/index.html';
+
+    // Guardar el tipo de usuario en localStorage
+    localStorage.setItem('tipo_usuario', resultado.tipo_usuario);
+
+    // Redirigir según el tipo de usuario
+    if (resultado.tipo_usuario === 'admin') {
+      window.location.href = '/index_admin.html';
+    } else {
+      window.location.href = '/index.html';
+    }
   });
 
   correoInput.addEventListener('input', () => correoInput.style.border = '');
@@ -45,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function verificarCredenciales(correo, contraseña) {
   try {
-    const response = await fetch('http://localhost:7070/usuarios/login', {
+    const response = await fetch('http://44.208.231.53:7078/usuarios/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,8 +68,17 @@ async function verificarCredenciales(correo, contraseña) {
     }
 
     const data = await response.json();
-    localStorage.setItem('jwt', data.token); // guarda JWT para futuras peticiones
-    return { autenticado: true };
+
+    // Guarda el token
+    localStorage.setItem('jwt', data.token);
+
+    // Extrae el tipo de usuario
+    const tipoUsuario = data.usuario?.tipo_usuario || 'user';
+
+    return {
+      autenticado: true,
+      tipo_usuario: tipoUsuario
+    };
   } catch (error) {
     console.error('Error de conexión:', error);
     return { autenticado: false };

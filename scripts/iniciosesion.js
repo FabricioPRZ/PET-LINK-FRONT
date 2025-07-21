@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Redirigir según el tipo de usuario
     if (resultado.tipo_usuario === 'admin') {
-      window.location.href = '/index_admin.html';
+      window.location.href = '/administrador pages/adoptar_admin.html';
     } else {
-      window.location.href = '/index.html';
+      window.location.href = '/pages/adoptar.html';
     }
   });
 

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.reset(); 
                 
                 setTimeout(() => {
-                    window.location.href = '/login'; 
+                    window.location.href = '/pages/registro.html'; 
                 }, 2000);
                 
             } else {

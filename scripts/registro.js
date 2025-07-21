@@ -42,8 +42,8 @@ form.addEventListener("submit", async (e) => {
   formData.append("contraseña", pass);
 
   try {
-    // Enviar solicitud al backend (ajusta la URL si no estás en local)
-    const res = await fetch("http://localhost:7070/usuarios", {
+    // Enviar solicitud al backend
+    const res = await fetch("http://44.208.231.53:7078/usuarios", {
       method: "POST",
       body: formData
     });

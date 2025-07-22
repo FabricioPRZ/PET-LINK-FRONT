@@ -1,221 +1,135 @@
+// perfil.js - Versión corregida
 document.addEventListener('DOMContentLoaded', async function() {
-    const userId = obtenerIdUsuario();
-    
-    await cargarDatosUsuario(userId);
-    agregarEventListenersABotones();
-    configurarModal();
+    // Verificar que el manejador de autenticación esté disponible
+    if (!window.authManager) {
+        console.error('AuthManager no está disponible. Asegúrate de incluir auth.js antes que perfil.js');
+        mostrarError('Error del sistema. Por favor, recarga la página.');
+        return;
+    }
+
+    await cargarPerfilUsuario();
 });
 
-// Función para obtener el ID del usuario
-function obtenerIdUsuario() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userIdFromUrl = urlParams.get('userId');
-    const userIdFromStorage = localStorage.getItem('userId');
-    const userIdFromSession = sessionStorage.getItem('userId');
-    return userIdFromUrl || userIdFromStorage || userIdFromSession || 1;
-}
-
-// Función para cargar los datos del usuario
-async function cargarDatosUsuario(userId) {
+async function cargarPerfilUsuario() {
     try {
-        mostrarCargando(true);
-        
-        const response = await fetch(`http://44.208.231.53:7078/usuarios/${userId}`);
-        
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        // Verificar autenticación usando el AuthManager
+        if (!authManager.isAuthenticated()) {
+            console.error('Usuario no autenticado');
+            mostrarError('No se encontró sesión activa. Redirigiendo al login...');
+            authManager.logout();
+            return;
         }
+
+        // Obtener el userId usando el AuthManager
+        const userId = authManager.getUserId();
         
-        const userData = await response.json();
+        if (!userId) {
+            console.error('No se pudo obtener el ID del usuario');
+            mostrarError('Error en la sesión. Por favor, inicia sesión nuevamente.');
+            authManager.logout();
+            return;
+        }
+
+        console.log('Cargando perfil para userId:', userId);
+
+        // Realizar la petición usando authenticatedFetch
+        const response = await authManager.authenticatedFetch(
+            `http://44.208.231.53:7078/usuarios/${userId}`
+        );
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                console.error('Token no válido o expirado');
+                mostrarError('Sesión expirada. Redirigiendo al login...');
+                authManager.logout();
+                return;
+            }
+            throw new Error(`Error HTTP: ${response.status} - ${response.statusText}`);
+        }
+
+        const usuario = await response.json();
+        console.log('Datos del usuario cargados:', usuario);
         
-        mostrarDatosEnPerfil(userData);
-        precargarFormularioEdicion(userData);
+        // Actualizar la interfaz con los datos del usuario
+        actualizarInterfazUsuario(usuario);
         
     } catch (error) {
-        console.error('Error al cargar datos del usuario:', error);
-        mostrarError('No se pudieron cargar los datos del perfil. Inténtalo de nuevo.');
-    } finally {
-        mostrarCargando(false);
+        console.error('Error al cargar el perfil del usuario:', error);
+        
+        // Si el error es por autenticación, redirigir al login
+        if (error.message.includes('Token') || error.message.includes('autenticación')) {
+            authManager.logout();
+        } else {
+            mostrarError('Error al cargar la información del usuario: ' + error.message);
+        }
     }
 }
 
-// Función para mostrar los datos en el perfil
-function mostrarDatosEnPerfil(userData) {
-    const infUser = document.querySelector('.inf-user');
-    
-    const nombreCompleto = `${userData.nombres} ${userData.apellido_paterno} ${userData.apellido_materno || ''}`.trim();
-    
-    infUser.innerHTML = `
-        <p>Nombre: <span style="color: #F08224;">${nombreCompleto}</span></p>
-        <br>
-        <p>Correo: <span style="color: #F08224;">${userData.correo}</span></p>
-        <br>
-        <p>Estado: <span style="color: #F08224;">Usuario ${userData.tipo_usuario === 'user' ? 'Regular' : 'Administrador'}</span></p>
-    `;
+function actualizarInterfazUsuario(usuario) {
+    try {
+        // Obtener los elementos donde se mostrará la información
+        const infUserDiv = document.querySelector('.inf-user');
+        
+        if (!infUserDiv) {
+            console.error('No se encontró el contenedor de información del usuario');
+            return;
+        }
+
+        // Actualizar el contenido con la información del usuario
+        // Ajusta los nombres de las propiedades según lo que devuelve tu API
+        infUserDiv.innerHTML = `
+            <p><strong>Nombre:</strong> ${usuario.nombres || usuario.name || 'No disponible'}</p>
+            <br>
+            <p><strong>Nombre de usuario:</strong> ${usuario.nombre_usuario || usuario.nombreUsuario || usuario.username || usuario.correo || 'No disponible'}</p>
+            <br>
+            <p><strong>Información de contacto:</strong> ${usuario.correo || usuario.email || usuario.telefono || usuario.phone || 'No disponible'}</p>
+        `;
+
+        // Si hay una imagen de perfil, actualizarla
+        const userIcon = document.querySelector('.user_icon');
+        if (userIcon && (usuario.fotoPerfil || usuario.foto_perfil || usuario.avatar)) {
+            userIcon.src = usuario.fotoPerfil || usuario.foto_perfil || usuario.avatar;
+            userIcon.alt = `Foto de perfil de ${usuario.nombre || 'Usuario'}`;
+        }
+        
+        console.log('Interfaz actualizada correctamente');
+        
+    } catch (error) {
+        console.error('Error al actualizar la interfaz:', error);
+        mostrarError('Error al mostrar la información del usuario');
+    }
 }
 
-// Función para precargar el formulario de edición
-function precargarFormularioEdicion(userData) {
-    document.getElementById('nombres').value = userData.nombres || '';
-    document.getElementById('apellido_paterno').value = userData.apellido_paterno || '';
-    document.getElementById('apellido_materno').value = userData.apellido_materno || '';
-    document.getElementById('correo').value = userData.correo || '';
-}
-
-// Función para mostrar estado de carga
-function mostrarCargando(mostrar) {
-    const infUser = document.querySelector('.inf-user');
+function mostrarError(mensaje) {
+    console.error('Mostrando error:', mensaje);
     
-    if (mostrar) {
-        infUser.innerHTML = `
-            <div style="display: flex; align-items: center; justify-content: center; height: 200px;">
-                <div style="color: #009FB9; font-size: 24px;">
-                    Cargando datos del perfil...
-                </div>
-            </div>
+    // Mostrar error en la interfaz
+    const infUserDiv = document.querySelector('.inf-user');
+    if (infUserDiv) {
+        infUserDiv.innerHTML = `
+            <p style="color: red; font-weight: bold;">❌ Error: ${mensaje}</p>
+            <br>
+            <p>Por favor, intenta recargar la página o contacta al administrador.</p>
         `;
     }
+    
+    // También mostrar alerta
+    alert(`❌ Error: ${mensaje}`);
 }
 
-// Función para mostrar errores
-function mostrarError(mensaje) {
-    const infUser = document.querySelector('.inf-user');
-    
-    infUser.innerHTML = `
-        <div style="color: #f44336; font-size: 24px; text-align: center;">
-            <p>❌ ${mensaje}</p>
-            <br>
-            <button onclick="location.reload()" style="
-                background-color: #009FB9; 
-                color: white; 
-                border: none; 
-                padding: 10px 20px; 
-                border-radius: 5px; 
-                cursor: pointer;
-                font-size: 16px;
-            ">
-                Reintentar
-            </button>
-        </div>
-    `;
+// Función para recargar el perfil (útil si necesitas actualizar después de cambios)
+async function recargarPerfil() {
+    console.log('Recargando perfil...');
+    await cargarPerfilUsuario();
 }
 
-// Función para configurar los listeners de los botones
-function agregarEventListenersABotones() {
-    const btnVerINE = document.querySelector('a[href="INE.html"]');
-    if (btnVerINE) {
-        btnVerINE.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = `INE.html?userId=${obtenerIdUsuario()}`;
-        });
-    }
-    
-    const botonesOpciones = document.querySelectorAll('.opciones-perfil a');
-    botonesOpciones.forEach(boton => {
-        if (!boton.href.includes('INE.html')) {
-            boton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const accion = this.getAttribute('data-accion');
-                
-                if (accion === 'editar') {
-                    abrirModal();
-                } else {
-                    console.log(`Acción seleccionada: ${accion}`);
-                    mostrarMensajeTemporal(`Función "${accion}" en desarrollo`);
-                }
-            });
-        }
-    });
-}
-
-// Función para configurar el modal
-function configurarModal() {
-    const modal = document.getElementById('modal-editar');
-    const btnCerrar = document.querySelector('.cerrar-modal');
-    const btnCancelar = document.querySelector('.btn-cancelar');
-    const form = document.getElementById('form-editar-perfil');
-    
-    // Función para abrir el modal
-    window.abrirModal = function() {
-        modal.style.display = 'block';
-    }
-    
-    // Función para cerrar el modal
-    function cerrarModal() {
-        modal.style.display = 'none';
-    }
-    
-    // Event listeners para cerrar el modal
-    btnCerrar.addEventListener('click', cerrarModal);
-    btnCancelar.addEventListener('click', cerrarModal);
-    
-    // Cerrar al hacer clic fuera del modal
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            cerrarModal();
-        }
-    });
-    
-    // Manejar envío del formulario
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        await guardarCambios();
-    });
-}
-
-// Función para guardar los cambios del perfil
-async function guardarCambios() {
-    try {
-        const userId = obtenerIdUsuario();
-        const formData = {
-            nombres: document.getElementById('nombres').value,
-            apellido_paterno: document.getElementById('apellido_paterno').value,
-            apellido_materno: document.getElementById('apellido_materno').value,
-            correo: document.getElementById('correo').value
-        };
-        
-        const response = await fetch(`http://44.208.231.53:7078/usuarios/${userId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-        
-        mostrarMensajeTemporal('Cambios guardados exitosamente');
-        document.querySelector('.cerrar-modal').click();
-        
-        // Recargar datos del perfil
-        await cargarDatosUsuario(userId);
-        
-    } catch (error) {
-        console.error('Error al guardar cambios:', error);
-        mostrarMensajeTemporal('Error al guardar cambios', true);
+// Función para cerrar sesión
+function cerrarSesion() {
+    if (confirm('¿Estás seguro que quieres cerrar sesión?')) {
+        authManager.logout();
     }
 }
 
-// Función para mostrar mensajes temporales
-function mostrarMensajeTemporal(mensaje, esError = false) {
-    const div = document.createElement('div');
-    div.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: ${esError ? '#f44336' : '#009FB9'};
-        color: white;
-        padding: 15px;
-        border-radius: 5px;
-        z-index: 1000;
-        font-family: 'Poppins', sans-serif;
-    `;
-    div.textContent = mensaje;
-    document.body.appendChild(div);
-    
-    setTimeout(() => {
-        div.remove();
-    }, 3000);
-}
+// Hacer las funciones disponibles globalmente para debugging
+window.recargarPerfil = recargarPerfil;
+window.cerrarSesion = cerrarSesion;

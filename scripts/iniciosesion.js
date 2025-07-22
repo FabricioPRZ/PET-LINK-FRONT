@@ -72,6 +72,17 @@ async function verificarCredenciales(correo, contraseña) {
     // Guarda el token
     localStorage.setItem('jwt', data.token);
 
+    // **AGREGAR ESTAS LÍNEAS:**
+    // Guardar el userId si viene en la respuesta
+    if (data.usuario?.id) {
+      localStorage.setItem('userId', data.usuario.id);
+    }
+
+    // También guardar otros datos del usuario si los necesitas
+    if (data.usuario) {
+      localStorage.setItem('userData', JSON.stringify(data.usuario));
+    }
+
     // Extrae el tipo de usuario
     const tipoUsuario = data.usuario?.tipo_usuario || 'user';
 

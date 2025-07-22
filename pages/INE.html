@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLink - Identificación</title>
     <link rel="stylesheet" href="/estilos/INE.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
@@ -11,13 +12,31 @@
 <body>
     <petlink-header></petlink-header>
     <div class="INE-tittle"><p>Identificación</p></div>
+    
     <section class="INE-contenido">
-    <img class="INE-img" src="/otros/placeholder_INE.svg" alt="INE img">
+        <img id="INE-img" class="INE-img" src="/otros/placeholder_INE.svg" alt="Identificación oficial">
     </section>
+    
     <section class="opciones-INE">
         <a class="btn btn-status" href="perfil.html">Volver al perfil</a>
-        <a class="btn btn-status" href="#Actualizar identifación">Actualizar identifación</a>
+        <button id="btn-actualizar" class="btn btn-status">Actualizar identificación</button>
+        <input type="file" id="input-file" accept="image/*" style="display: none;">
     </section>
-    </main>
+
+    <div id="modal-confirmar" class="modal">
+        <div class="modal-contenido">
+            <h2>Confirmar Actualización</h2>
+            <p>¿Estás seguro que deseas actualizar tu identificación?</p>
+            <div class="modal-preview">
+                <img id="preview-img" src="#" alt="Vista previa">
+            </div>
+            <div class="modal-actions">
+                <button id="btn-confirmar" class="btn btn-guardar">Confirmar</button>
+                <button id="btn-cancelar" class="btn btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/Ine.js"></script>
 </body>
 </html>

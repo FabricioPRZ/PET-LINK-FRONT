@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     const sexoSelect = document.getElementById('sexo-select');
     const cardsContainer = document.getElementById('cards-container');
 
+    const especiesMap = {
+        1: "Perro",
+        2: "Gato",
+        3: "Hamster",
+        4: "Tortuga"
+    };
+
+    const tamanosMap = {
+        1: "Pequeño",
+        2: "Mediano",
+        3: "Grande"
+    };
+
     let mascotas = [];
 
     async function obtenerMascotas() {
@@ -14,45 +27,16 @@ document.addEventListener('DOMContentLoaded', async function () {
                 throw new Error('Error al obtener las mascotas');
             }
             mascotas = await response.json();
-
-            mascotas = [
-                {
-                    id: 1,
-                    nombre: "Peluchín",
-                    edad: "1 año",
-                    especie: "Perro",
-                    tamaño: "Mediano",
-                    sexo: "Macho",
-                    imagen: "/img/peluchin.jpg"
-                },
-                {
-                    id: 2,
-                    nombre: "Athena",
-                    edad: "9 meses",
-                    especie: "Hámster",
-                    tamaño: "Pequeño",
-                    sexo: "Hembra",
-                    imagen: "/img/athena.jpg"
-                },
-                {
-                    id: 3,
-                    nombre: "Marina",
-                    edad: "3 años",
-                    especie: "Gato",
-                    tamaño: "Pequeño",
-                    sexo: "Hembra",
-                    imagen: "/img/marina.jpg"
-                },
-                {
-                    id: 4,
-                    nombre: "Bartolomé",
-                    edad: "2 años",
-                    especie: "Conejo",
-                    tamaño: "Mediano",
-                    sexo: "Macho",
-                    imagen: "/img/bartolomé.jpg"
-                }
-            ];
+            
+            mascotas = mascotas.map(mascota => ({
+                id: mascota.id_mascotas,
+                nombre: mascota.nombre_mascotas,
+                edad: "Edad no especificada", 
+                especie: especiesMap[mascota.codigo_especie] || "Desconocido",
+                tamaño: tamanosMap[mascota.codigo_tamaño] || "Desconocido",
+                sexo: mascota.sexo,
+                imagen: "/img/default-pet.jpg" 
+            }));
 
             cargarEspeciesUnicas();
             renderizarMascotas(mascotas);
@@ -80,6 +64,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
+        const gridContainer = document.createElement('div');
+        gridContainer.style.display = 'flex';
+        gridContainer.style.flexWrap = 'wrap';
+        gridContainer.style.gap = '20px';
+        gridContainer.style.justifyContent = 'center';
+        
         mascotasFiltradas.forEach(mascota => {
             const card = document.createElement('div');
             card.className = 'pet-card';
@@ -88,29 +78,31 @@ document.addEventListener('DOMContentLoaded', async function () {
             card.dataset.sexo = mascota.sexo;
 
             card.innerHTML = `
-                        <img src="${mascota.imagen}" alt="${mascota.nombre}" class="pet-image">
-                        <div class="pet-info">
-                            <div class="pet-info-row">
-                                <span class="pet-info-label">Nombre:</span>
-                                <span class="pet-info-value">${mascota.nombre}</span>
-                            </div>
-                            <div class="pet-info-row">
-                                <span class="pet-info-label">Edad:</span>
-                                <span class="pet-info-value">${mascota.edad}</span>
-                            </div>
-                            <div class="pet-info-row">
-                                <span class="pet-info-label">Especie:</span>
-                                <span class="pet-info-value">${mascota.especie}</span>
-                            </div>
-                        </div>
-                        <div class="pet-buttons">
-                            <button class="btn btn-status">Ver más</button>
-                            <button class="btn btn-status-eliminar">Adoptar</button>
-                        </div>
-                    `;
+                <img src="${mascota.imagen}" alt="${mascota.nombre}" class="pet-image">
+                <div class="pet-info">
+                    <div class="pet-info-row">
+                        <span class="pet-info-label">Nombre:</span>
+                        <span class="pet-info-value">${mascota.nombre}</span>
+                    </div>
+                    <div class="pet-info-row">
+                        <span class="pet-info-label">Edad:</span>
+                        <span class="pet-info-value">${mascota.edad}</span>
+                    </div>
+                    <div class="pet-info-row">
+                        <span class="pet-info-label">Especie:</span>
+                        <span class="pet-info-value">${mascota.especie}</span>
+                    </div>
+                </div>
+                <div class="pet-buttons">
+                    <button class="btn btn-status">Ver más</button>
+                    <button class="btn btn-status-eliminar">Adoptar</button>
+                </div>
+            `;
 
-            cardsContainer.appendChild(card);
+            gridContainer.appendChild(card);
         });
+
+        cardsContainer.appendChild(gridContainer);
     }
 
     function filtrarMascotas() {

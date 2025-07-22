@@ -109,7 +109,7 @@ class AuthManager {
         localStorage.removeItem('tipo_usuario');
         
         // Redirigir al login
-        window.location.href = '/login.html';
+        window.location.href = '/pages/iniciosesion.html';
     }
 
     // Verificar autenticación al cargar página

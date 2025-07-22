@@ -1,4 +1,4 @@
-const API = "http://localhost:7070";
+const API = "http://44.208.231.53:7078/solicitudes-cedente";
 let modoEdicion = false;
 let idMascotaActual = null;
 let idSolicitudCedenteActual = null;

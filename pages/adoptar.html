@@ -12,131 +12,38 @@
     <petlink-header></petlink-header>
 
     <div class="adoptar-main">
-    <section class="adoptar-busqueda">
-        <p>Buscar mascotas por:</p>
-        <div class="adoptar-filtros">
-            
-            <select name="" id="" class="styled-select">
-                <option value="" disabled selected hidden>Especie</option>
-                <option value="">Perro</option>
-                <option value="">Gato</option>
-                <option value="">Hamster</option>
-                <option value="">Tortuga</option>
-                <option value="">Pájaro</option>
-                <option value="">Conejo</option>
-                <option value="">Reptil</option>
-            </select>
-            
-            <select name="" id="" class="styled-select">
-                <option value="" disabled selected hidden>Tamaño</option>
-                <option value="">Pequeño</option>
-                <option value="">Mediano</option>
-                <option value="">Grande</option>
-            </select>
+        <section class="adoptar-busqueda">
+            <p>Buscar mascotas por:</p>
+            <div class="adoptar-filtros">
+                <select name="especie" id="especie-select" class="styled-select">
+                    <option value="" selected>Todas las especies</option>
+                </select>
+                
+                <select name="tamaño" id="tamano-select" class="styled-select">
+                    <option value="" selected>Todos los tamaños</option>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
 
-            <select name="" id="" class="styled-select">
-                <option value="" disabled selected hidden>Sexo</option>
-                <option value="">Macho</option>
-                <option value="">Hembra</option>
-            </select>
+                <select name="sexo" id="sexo-select" class="styled-select">
+                    <option value="" selected>Todos</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Hembra">Hembra</option>
+                </select>
 
-            <button class="icon-buscar">
-                <a href="">Buscar</a>
-                <img src="/img/huella_buscar.svg" alt="" id="huella-buscar"> 
-            </button>
-        </div>
-    </section>
-    </div>
-
-    <div class="cards-container">
-                <div class="pet-card">
-                    <img src="/img/peluchin.jpg" alt="Peluchín" class="pet-image">
-                    <div class="pet-info">
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Nombre:</span>
-                            <span class="pet-info-value">Peluchín</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Edad:</span>
-                            <span class="pet-info-value">1 año</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Especie:</span>
-                            <span class="pet-info-value">Perro</span>
-                        </div>
-                    </div>
-                    <div class="pet-buttons">
-                        <button class="btn btn-status">Ver más</button>
-                        <button class="btn btn-status-eliminar" >Adoptar</button>
-                    </div>
-                </div>
-
-                <div class="pet-card">
-                    <img src="/img/athena.jpg" alt="Athena" class="pet-image">
-                    <div class="pet-info">
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Nombre:</span>
-                            <span class="pet-info-value">Athena</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Edad:</span>
-                            <span class="pet-info-value">9 meses</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Especie:</span>
-                            <span class="pet-info-value">Hámster</span>
-                        </div>
-                    </div>
-                    <div class="pet-buttons">
-                        <button class="btn btn-status">Ver más</button>
-                        <button class="btn btn-status-eliminar" >Adoptar</button>
-                    </div>
-                </div>
-
-                <div class="pet-card">
-                    <img src="/img/marina.jpg" alt="Marina" class="pet-image">
-                    <div class="pet-info">
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Nombre:</span>
-                            <span class="pet-info-value">Marina</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Edad:</span>
-                            <span class="pet-info-value">3 años</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Especie:</span>
-                            <span class="pet-info-value">Gato</span>
-                        </div>
-                    </div>
-                    <div class="pet-buttons">
-                        <button class="btn btn-status">Ver más</button>
-                        <button class="btn btn-status-eliminar" >Adoptar</button>
-                    </div>
-                </div>
-
-                <div class="pet-card">
-                    <img src="/img/bartolomé.jpg" alt="Bartolomé" class="pet-image">
-                    <div class="pet-info">
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Nombre:</span>
-                            <span class="pet-info-value">Bartolomé</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Edad:</span>
-                            <span class="pet-info-value">2 años</span>
-                        </div>
-                        <div class="pet-info-row">
-                            <span class="pet-info-label">Especie:</span>
-                            <span class="pet-info-value">Conejo</span>
-                        </div>
-                    </div>
-                    <div class="pet-buttons">
-                        <button class="btn btn-status">Ver más</button>
-                        <button class="btn btn-status-eliminar" >Adoptar</button>
-                    </div>
-                </div>
+                <button class="icon-buscar" id="buscar-btn">
+                    Buscar
+                    <img src="/img/huella_buscar.svg" alt="" id="huella-buscar"> 
+                </button>
             </div>
+        </section>
     </div>
+
+    <div class="cards-container" id="cards-container">
+        <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
+    </div>
+
+    <script src="/js/adoptarFilter.js"></script>
 </body>
 </html>

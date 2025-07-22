@@ -69,26 +69,16 @@ async function verificarCredenciales(correo, contraseña) {
 
     const data = await response.json();
 
-    // Guarda el token
+    // Guardar toda la información relevante
     localStorage.setItem('jwt', data.token);
-
-    // **AGREGAR ESTAS LÍNEAS:**
-    // Guardar el userId si viene en la respuesta
-    if (data.usuario?.id) {
-      localStorage.setItem('userId', data.usuario.id);
-    }
-
-    // También guardar otros datos del usuario si los necesitas
-    if (data.usuario) {
-      localStorage.setItem('userData', JSON.stringify(data.usuario));
-    }
-
-    // Extrae el tipo de usuario
-    const tipoUsuario = data.usuario?.tipo_usuario || 'user';
+    localStorage.setItem('token', data.token); // Por compatibilidad con código existente
+    localStorage.setItem('userId', data.usuario.id);
+    localStorage.setItem('userData', JSON.stringify(data.usuario));
+    localStorage.setItem('tipo_usuario', data.usuario.tipo_usuario);
 
     return {
       autenticado: true,
-      tipo_usuario: tipoUsuario
+      tipo_usuario: data.usuario.tipo_usuario
     };
   } catch (error) {
     console.error('Error de conexión:', error);

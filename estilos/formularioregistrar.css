@@ -9,7 +9,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-h1{
+h1 {
     font-family: 'Fredoka', sans-serif;
     font-weight: bold;
     color: #009FB9;
@@ -21,7 +21,7 @@ h1{
     padding-bottom: 40px;
 }
 
-label{
+label {
     font-family: 'Fredoka', sans-serif;
     color: #009FB9;
     font-size: 30px;
@@ -36,49 +36,47 @@ label{
     height: 54px;
     width: 600px;
     display: flex;
-    
 }
 
-.form ::placeholder{
+.form ::placeholder {
     font-family: 'poppins';
     color: #FEE2C2;
     font-size: 25px;
     text-align: center;
 }
 
-
-#descripcion-mascota{
+#descripcion-mascota {
     width: 1260px;
     height: 90px;
 }
 
-.form{
+.form {
     display: flex;
     gap: 60px;
 }
 
-.datos-container{
+.datos-container {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.fotos-mascota{
+.fotos-mascota {
     padding-bottom: 30px;
 }
 
-.fotos-input{
+.fotos-input {
     display: flex;
     gap: 199px;
     padding-top: 28px;
 }
 
-.fotos-input input{
+.fotos-input input {
     width: 284px;
     height: 221px;
 }
 
-input[type="file"]::file-selector-button{
+input[type="file"]::file-selector-button {
     background-color: white;
     border: 3px solid #F08224;
     border-radius: 15px;
@@ -87,24 +85,19 @@ input[type="file"]::file-selector-button{
     display: flex;
 }
 
-/* Añade esto al final de tu archivo CSS */
-
-/* Ajustes para los placeholders */
 ::placeholder {
     font-family: 'poppins';
     color: #FEE2C2;
     font-size: 25px;
     text-align: center;
-    line-height: 54px; /* Añade esta línea para centrar verticalmente */
+    line-height: 54px;
 }
 
-/* Ajuste especial para el textarea */
 #descripcion-mascota::placeholder {
-    line-height: 90px; /* Altura igual a la del textarea */
+    line-height: 90px;
     text-align: center;
 }
 
-/* Estilos para los inputs de archivo */
 .file-input-container {
     position: relative;
     width: 284px;
@@ -120,8 +113,6 @@ input[type="file"]::file-selector-button{
     left: 0;
     cursor: pointer;
 }
-
-/* ...resto de tu CSS... */
 
 .file-input-label {
     display: flex;
@@ -165,9 +156,6 @@ input[type="file"]::file-selector-button{
     margin-bottom: 10px;
 }
 
-
-
-/* Estilos para los selects */
 select.styled-select {
     appearance: none;
     -webkit-appearance: none;
@@ -198,7 +186,6 @@ select.styled-select:invalid {
     color: #FEE2C2;
 }
 
-/* Estilo para el dropdown del select */
 select.styled-select option {
     background-color: white;
 }
@@ -207,13 +194,13 @@ select.styled-select option:hover {
     background-color: #FFF9E9;
 }
 
-.registrar-boton{
+.registrar-boton {
     text-align: center;
     padding-bottom: 50px;
     padding-top: 30px;
 }
 
-.registrar-boton a{
+.registrar-boton a {
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
     font-weight: 500;
@@ -232,24 +219,19 @@ select.styled-select option:hover {
 }
 
 .btn-status {
-  background-color: #009FB9;
-  border: 1.8px solid #006272;
-  border-radius: 12px;
-  color: white;
-  font-size: 25px;
+    background-color: #009FB9;
+    border: 1.8px solid #006272;
+    border-radius: 12px;
+    color: white;
+    font-size: 25px;
 }
 
 .btn-status:hover {
-    padding: ;
-  background-color: #FFF9E9;
-  border: 1.8px solid #006272;
-  color: #053A42;
+    background-color: #FFF9E9;
+    border: 1.8px solid #006272;
+    color: #053A42;
 }
 
-
-/* ...tu CSS anterior... */
-
-/* Añade esto al final de tu archivo CSS para el multiselect de vacunas */
 .vacunas-multiselect {
     position: relative;
     width: 600px;
@@ -292,40 +274,32 @@ select.styled-select option:hover {
     padding: 15px 0;
 }
 
-/* ...tu CSS anterior permanece igual... */
-
-/* Ajustes para las opciones del multiselect de vacunas */
 .vacunas-dropdown label {
     display: flex;
     align-items: center;
     font-size: 22px;
     color: #F08224;
-    padding-left: 20px; /* padding izquierdo para casilla y texto */
+    padding-left: 20px;
     line-height: 24px;
     letter-spacing: 0px;
-    margin-bottom: 6px; /* espacio entre opciones */
+    margin-bottom: 6px;
 }
 
-/* Ajuste para el checkbox */
 .vacunas-dropdown input[type="checkbox"] {
     margin-right: 12px;
     accent-color: #F08224;
     width: 18px;
     height: 18px;
-    padding-left: 20px; /* padding izquierdo para checkbox */
+    padding-left: 20px;
 }
 
 .vacunas-dropdown label span {
     font-size: 22px;
     line-height: 24px;
     letter-spacing: 0px;
-    padding-left: 20px; /* padding izquierdo para texto, si usas <span> para texto */
+    padding-left: 20px;
 }
 
-/* Si el texto no está en un <span>, el padding del label es suficiente */
-/* ...resto de tu CSS permanece igual... */
-
-/* Show dropdown when active */
 .vacunas-select.active .vacunas-dropdown {
     display: flex;
 }
@@ -339,27 +313,18 @@ select.styled-select option:hover {
     outline: none;
 }
 
-/* ...resto de tu CSS permanece igual... */
-/* ...resto de tu CSS... */
-
-/* Eliminar flechas de los inputs de tipo number (Chrome, Safari, Edge) */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-/* Eliminar flechas en Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-/* Centrar el texto del placeholder del select de vacunas */
 #vacunas-placeholder {
     width: 100%;
     display: block;
     text-align: center;
 }
-
-/* ...resto de tu CSS... */
-

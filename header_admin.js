@@ -94,7 +94,6 @@ class PetLinkHeader extends HTMLElement {
             <a href="/administrador pages/formulario_registrar_admin.html">Dar en adopción</a>
             <a href="/administrador pages/perfil_admin.html">Perfil</a>
             <a href="/administrador pages/solicitudesdeadopcion.html">Solicitudes Adopción</a>
-            <a href="/administrador pages/solicitudespararegistrar.html">Solicitudes Registro</a>
             <a href="/pages/iniciosesion.html">Iniciar Sesión</a>
           </nav>
         </div>

@@ -1,10 +1,10 @@
-const API = "http://localhost:7070";
+const API = "http://44.208.231.53:7078";
 
 window.addEventListener("DOMContentLoaded", async () => {
   const tbody = document.getElementById("tbodySolicitudes");
 
   try {
-    const res = await fetch(`${API}/admin/solicitudes-adopcion`);
+    const res = await fetch(`${API}/solicitudes-adopcion`);
     const solicitudes = await res.json();
     tbody.innerHTML = "";
 

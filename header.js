@@ -82,7 +82,7 @@ class PetLinkHeader extends HTMLElement {
         <div class="navbar-container">
           <div class="logo-container">
             <div class="logo-circle">
-              <img class="logo-svg" src="/iconos/Logo PetLink.svg" alt="PetLink Logo">
+              <img class="logo-svg" src="/logos/PetLink Logo.svg" alt="PetLink Logo">
             </div>
             <div class="logo_texto">
               <p>PetLink</p>

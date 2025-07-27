@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetLink - Mascota</title>
+  <link rel="stylesheet" href="mascota.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+  <script src="/scripts/publicacionmascota.js" defer></script>
+  <script src="/header.js" defer></script>
+</head>
+
+<body>
+  <petlink-header></petlink-header>
+
+  <main>
+    <div class="titulo-seccion">
+      <hr class="linea" />
+      <h2>Mascotas</h2>
+      <hr class="linea" />
+    </div>
+
+    <section class="main-card">
+      <div class="images">
+        <img src="" alt="Imagen principal" class="main-img" id="imagenPrincipal" />
+        <div class="thumbs" id="imagenesMiniatura">
+          <!-- Miniaturas dinámicas -->
+        </div>
+      </div>
+
+      <div class="profile-container">
+        <div class="nombreicon">
+          <h1 id="nombreMascota">—</h1>
+          <img src="/src/public/Iconos/patita.png" class="iconpatita" alt="" />
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Especie:</div>
+            <div class="info-value" id="especieMascota">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Sexo:</div>
+            <div class="info-value" id="sexoMascota">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Desparasitado:</div>
+            <div class="info-value" id="desparasitado">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Tamaño:</div>
+            <div class="info-value" id="tamanoMascota">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Discapacidades:</div>
+            <div class="info-value" id="discapacitado">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Enfermedades:</div>
+            <div class="info-value" id="enfermedades">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Peso:</div>
+            <div class="info-value" id="pesoMascota">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Esterilizado:</div>
+            <div class="info-value" id="esterilizado">—</div>
+          </div>
+          <div class="info-item full-width">
+            <div class="info-label">Vacunas:</div>
+            <ul class="vaccines-list" id="listaVacunas">
+              <!-- Vacunas dinámicas -->
+            </ul>
+          </div>
+          <div class="info-item full-width">
+            <div class="info-label">Descripción:</div>
+            <div class="info-value" id="descripcionMascota">—</div>
+          </div>
+        </div>
+
+        <a href="./formularioadoptar.html" class="adopt-button">Adoptar</a>
+      </div>
+    </section>
+
+    <div class="otras">
+      <hr class="linea" />
+      <h2 class="section-title">Otras mascotas</h2>
+    </div>
+
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <button class="nav-arrow left">&#x276E;</button>
+        <button class="nav-arrow right">&#x276F;</button>
+
+        <div class="cards-container">
+          <!-- Las pet-cards se pueden generar dinámicamente -->
+          <!-- Ejemplo de card estática -->
+          <div class="pet-card">
+            <img src="/src/public/mascotas/default.jpg" alt="Mascota" class="pet-image">
+            <div class="pet-info">
+              <div class="pet-info-row">
+                <span class="pet-info-label">Nombre:</span>
+                <span class="pet-info-value">—</span>
+              </div>
+              <div class="pet-info-row">
+                <span class="pet-info-label">Edad:</span>
+                <span class="pet-info-value">—</span>
+              </div>
+              <div class="pet-info-row">
+                <span class="pet-info-label">Especie:</span>
+                <span class="pet-info-value">—</span>
+              </div>
+            </div>
+            <div class="pet-buttons">
+              <button class="btn btn-info">Ver más</button>
+              <button class="btn btn-adopt">Adoptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button class="know-more-btn">Conocer más</button>
+    </div>
+  </main>
+</body>
+
+</html>

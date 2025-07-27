@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('/Iconos/Petlink_fondo_huellas.jpg');
+    position: relative;
+    margin: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 229, 170, 0.15);
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 800px;
+    width: 900px;
+    height: 700px;
+    background-color: #FFF9E9;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #f7f0e8;
+    display: flex;
+    padding: 0px;
+}
+
+
+.form-content .formulario{
+    border: 2px solid #F08224;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin-top: 30px;
+    display: flex;
+    margin-left: 50px;
+    height: 470px;
+}
+
+
+.sidebar {
+    background-color: #F08224;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    width: 110px;
+    height: 100;
+}
+
+.sidebar img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 3px;
+    margin-left: -3px;
+}
+
+.form-content {
+    padding: 40px;
+    width: 65%;
+    justify-items: center;
+}
+
+.form-content img{
+    width: 60px;
+    height: 60px;
+    padding: 0px;
+    display: flex;
+    justify-items: center;
+    margin-bottom: 0px;
+    margin-top: -13px;
+}
+
+h2 {
+    color: #3b3b3b;
+    margin-bottom: 20px;
+    font-weight: 100;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 10px;
+    border: 1px solid #bbb; /* borde más perceptible */
+    border-radius: 8px;
+    background-color: #FFF9E9; /* fondo agregado */
+    width: 450px;
+    margin-bottom: 5px;
+    height: 15px;
+}
+
+
+.form-content select{
+    width: 75px;
+    height: 34px;
+     border: 1px solid #ccc;
+    border-radius: 8px;
+     margin: 10px 10px;
+     background-color: #FFF9E9;
+    border: 1px solid #bbb;
+}
+
+.form-content .archivo{
+    width: 310px;
+    height: 15px;
+    padding: 10px;
+    margin: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: #FFF9E9;
+    border: 1px solid #bbb;
+}
+
+.form-content label{
+    font-size: 11px;
+    margin-left: 15px;
+    margin-right: -50px;
+}
+
+.form-content .edadfoto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 482px;
+}
+
+button {
+    width: 135px;
+    height: 32px;
+    background-color: #00a8b4;
+    color: white;
+    border: 1.6px solid #053A42;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 175px;
+    margin-top: -15px;
+}
+
+
+button:hover {
+    background-color: #008f99;
+}
+
+.user-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.user-options .option {
+    text-align: center;
+    width: 45%;
+}
+
+.user-options img {
+    width: 60px;
+    margin-bottom: 10px;
+}

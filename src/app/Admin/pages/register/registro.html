@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PetLink - Registro</title>
+    <link rel="stylesheet" href="registro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-circle">
+                <img class="logo-svg" src="/src/public/Iconos/Logo PetLink.svg" alt="PetLink Logo">
+            </div>
+            <h3>PetLink</h3>
+        </div>
+        <div class="form-content">
+            <img src="/src/public/Iconos/iconoU.png" alt="icono usuario">
+            <h2>Registrarse</h2>
+            <div class="formulario">
+                <form id="registroForm" action="/usuarios" method="POST" enctype="multipart/form-data">
+                    <input type="text" id="nombres" name="nombres" placeholder="Nombre(s)" required>
+                    <input type="text" id="apellido_paterno" name="apellido_paterno" placeholder="Apellido paterno" required>
+                    <input type="text" id="apellido_materno" name="apellido_materno" placeholder="Apellido materno" required>
+                    <input type="number" id="edad" name="edad" placeholder="Edad" required min="18" max="100">
+
+                    <div class="edadfoto">
+                        <label for="foto_ine">Adjuntar INE (jpg, png):</label><br>
+                        <input type="file" id="foto_ine" name="foto_ine" accept=".jpg,.jpeg,.png" required class="archivo">
+                    </div>
+
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
+                    <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar contraseña" required>
+
+                    <button type="submit">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="register.js"></script>
+</body>
+</html>

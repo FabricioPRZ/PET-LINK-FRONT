@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetLink - Elección de Usuario</title>
+    <link rel="stylesheet" href="eleccionusuario.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/src/public/Iconos/Logo PetLink.svg" alt="PetLink Logo" />
+                <h2>PetLink</h2>
+            </div>
+        </aside>
+
+        <main class="main">
+            <h1>¡Bienvenido!</h1>
+            <p class="subtitle">¿Qué tipo de usuario serás?</p>
+
+            <div class="cards">
+                <!-- Administrador -->
+                <div class="card">
+                    <div class="icon">
+                        <img src="/src/public/Iconos/admi.png" alt="Icono Administrador">
+                    </div>
+                    <button onclick="location.href='/src/app/Admin/pages/login/iniciosesion.html'" class="btn">Administrador</button>
+                    <p class="note">Nota:<br>Este usuario no podrá adoptar o dar en adopción</p>
+                </div>
+
+                <!-- Usuario -->
+                <div class="card">
+                    <div class="icon">
+                        <img src="/src/public/Iconos/usuario.png" alt="Icono Usuario">
+                    </div>
+                    <button onclick="location.href='/src/app/User/pages/login/iniciosesion.html'" class="btn">Usuario</button>
+                    <p class="note">Nota:<br>Este usuario no podrá editar ni subir publicaciones</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

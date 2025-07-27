@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLink - Nosotros</title>
+    <link rel="stylesheet" href="nosotros.css">
+    <script src="/header.js" defer></script>
+
+</head>
+
+<body>
+    <petlink-header></petlink-header>
+
+
+    <main>
+        <section class="quienes">
+            <img class="icono-pata" src="/src/public/Iconos/Logo PetLink.svg" alt="Icono pata">
+            <h3>PetLink</h3>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                Somos una plataforma comprometida con el bienestar animal.<br>
+                Nuestro objetivo es conectar mascotas en busca de un hogar con personas<br>
+                responsables que deseen adoptar.
+            </p>
+            <img class="grupo-mascotas" src="/src/public/otros/animalitos.png" alt="Grupo de mascotas">
+        </section>
+
+        <section class="mision-vision-valores">
+            <div class="card mision">
+                <img src="/src/public/otros/misión.png" alt="">
+                <h3>Misión</h3>
+                <p>Facilitar procesos de adopción, garantizando el bienestar de cada mascota y fomentando una cultura de
+                    respeto, compromiso y amor hacia los animales.</p>
+            </div>
+            <div class="card vision">
+                <img src="/src/public/otros/visión.png" alt="">
+                <h3>Visión</h3>
+                <p>Ser una plataforma a nivel nacional reconocida por proteger y promover hogares responsables que les
+                    brinden una segunda oportunidad.</p>
+            </div>
+            <div class="card valores">
+                <img src="/src/public/otros/valores.png" alt="">
+                <h3>Valores</h3>
+                <p><strong>Responsabilidad:</strong> Cada adopción es evaluada con criterios seguros.<br>
+                    <strong>Empatía:</strong> Comprendemos cada historia.<br>
+                    <strong>Respeto:</strong> Valoramos la vida y dignidad de cada ser vivo.
+                </p>
+            </div>
+        </section>
+
+        <section class="funcionamiento">
+            <h2>¿Cómo funciona la página?</h2>
+            <div class="usuarios">
+                <div class="adoptantes">
+                    <h3>Adoptantes</h3>
+                    <ol>
+                        <li>Se registran/inician sesión</li>
+                        <li>Llenan formulario detallado para solicitar la adopción de la mascota</li>
+                        <li>Esperan evaluación y reciben respuesta: aprobada, rechazada o pendiente</li>
+                    </ol>
+                </div>
+                <div class="cedentes">
+                    <h3>Cedentes</h3>
+                    <ol>
+                        <li>Se registran/inician sesión</li>
+                        <li>Llenan formulario sobre la mascota que desean dar en adopción</li>
+                        <li>Esperan evaluación y si es aprobada se publica la mascota</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="estadisticas">
+            <h2>Éstas son nuestras estadísticas</h2>
+            <div class="graficas"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="grafica" style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
+                    <h3>Mascotas adoptadas esta semana</h3>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%">
+                        <canvas id="adopcionesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="grafica" style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
+                    <h3>Mascotas agregadas esta semana</h3>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%">
+                        <canvas id="agregadasChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="grafica" style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
+                    <h3>Mascotas más adoptadas</h3>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%">
+                        <canvas id="topMascotasChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                async function obtenerEstadisticas() {
+                    try {
+                        const response = await fetch('http://44.208.231.53:7078/estadisticas/mascotas');
+                        if (!response.ok) {
+                            throw new Error('Error al obtener las estadísticas');
+                        }
+                        return await response.json();
+                    } catch (error) {
+                        console.error('Error:', error);
+                        return {
+                            "mascotasAdoptadasSemana": 0,
+                            "mascotasAgregadasSemana": 0,
+                            "mascotasMasAdoptadas": {
+                                "Perro": 0,
+                                "Gato": 0,
+                                "Conejo": 0,
+                                "Ave": 0
+                            }
+                        };
+                    }
+                }
+
+                function crearGraficas(estadisticas) {
+                    const ctxAdopciones = document.getElementById('adopcionesChart');
+                    if (ctxAdopciones) {
+                        new Chart(ctxAdopciones, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Adopciones esta semana'],
+                                datasets: [{
+                                    label: 'Mascotas adoptadas',
+                                    data: [estadisticas.mascotasAdoptadasSemana],
+                                    backgroundColor: 'rgba(0, 159, 185, 0.7)',
+                                    borderColor: 'rgba(0, 159, 185, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    const ctxAgregadas = document.getElementById('agregadasChart');
+                    if (ctxAgregadas) {
+                        new Chart(ctxAgregadas, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Nuevas mascotas'],
+                                datasets: [{
+                                    label: 'Mascotas agregadas',
+                                    data: [estadisticas.mascotasAgregadasSemana],
+                                    backgroundColor: 'rgba(240, 130, 36, 0.7)',
+                                    borderColor: 'rgba(240, 130, 36, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    const mascotasTop = Object.keys(estadisticas.mascotasMasAdoptadas);
+                    const adopcionesTop = Object.values(estadisticas.mascotasMasAdoptadas);
+
+                    const ctxTopMascotas = document.getElementById('topMascotasChart');
+                    if (ctxTopMascotas) {
+                        new Chart(ctxTopMascotas, {
+                            type: 'pie',
+                            data: {
+                                labels: mascotasTop,
+                                datasets: [{
+                                    label: 'Adopciones por tipo',
+                                    data: adopcionesTop,
+                                    backgroundColor: [
+                                        'rgba(0, 159, 185, 0.7)',
+                                        'rgba(240, 130, 36, 0.7)',
+                                        'rgba(220, 110, 16, 0.7)',
+                                        'rgba(0, 98, 114, 0.7)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 159, 185, 1)',
+                                        'rgba(240, 130, 36, 1)',
+                                        'rgba(220, 110, 16, 1)',
+                                        'rgba(0, 98, 114, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom'
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                async function cargarGraficas() {
+                    const estadisticas = await obtenerEstadisticas();
+                    crearGraficas(estadisticas);
+                }
+
+                cargarGraficas();
+            });
+        </script>
+    </main>
+
+    <footer class="footer">
+        <div class="petlinkfooter">
+
+            <div class="contact-info">
+                <img src="/src/public/otros/infocontacto.png" alt="">
+            </div>
+
+            <div class="nav-links">
+                <a href="/index.html">Inicio</a>
+                <a href="src/app/pages/nosotros.html">Nosotros</a>
+                <a href="src/app/User/pages/adoptar/adoptar.html">Adoptar</a>
+                <a href="src/spp/User/pages/darAdopcion/dar_en_adopcion.html">Dar en adopción</a>
+                <a href="src/app/pages/antesAdoptar/antes-de-adoptar.html">Antes de adoptar</a>
+            </div>
+
+
+            <div class="logo-section">
+                <img src="/src/public/Iconos/Logo PetLink.svg" alt="PetLink Logo">
+                <div class="legal-links">
+                    <a href="#terminos">Términos y condiciones</a>
+                    <a href="#privacidad">Avisos de privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,106 +1,128 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #FFF9E9;
-    font-family: 'Poppins', sans-serif;
+  background-color: #fef6e8;
+  font-family: 'Nunito', sans-serif;
 }
 
-.dar-en-adopcion-display img{
-    width: 130px;
-    height: 500px;
-    position: absolute;
-    left: 12%;
-    top: 77%;
-    padding-bottom: 50px;
+/* Imagen decorativa (opcional) */
+.dar-en-adopcion-display img {
+  width: 130px;
+  height: 500px;
+  position: absolute;
+  left: 12%;
+  top: 77%;
+  padding-bottom: 50px;
 }
 
-.dar-en-adopcion-principal{
-    padding-top: 60px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    padding-bottom: 30px;
-
+/* Contenedor principal */
+.dar-en-adopcion-principal {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.dar-en-adopcion-contenido{
-    border: solid;
-    border-color: #F08224;
-    border-width: 5px;
-    border-radius: 15px;
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+/* Caja de contenido */
+.dar-en-adopcion-contenido {
+  background-color: #fff8f0;
+  border: 3px solid #f77f2d;
+  border-radius: 15px;
+  padding: 40px 30px;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
-.dar-en-adopcion-tittle p{
-    font-family: 'Fredoka', sans-serif;
-    font-weight: bold;
-    color: #009FB9;
-    font-size: 64px;
-    line-height: 56px;
-    letter-spacing: 3px;
-    padding-bottom: 40px;
-    text-align: center;
+/* Título principal */
+.dar-en-adopcion-tittle p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: #0096a6;
+  font-size: 48px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
 }
 
-
-.dar-en-adopcion-texto{
-
+/* Texto descriptivo */
+.dar-en-adopcion-texto p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: #333;
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  padding: 0 20px;
 }
 
-.dar-en-adopcion-texto p{
-    font-family: 'Fredoka', sans-serif;
-    font-weight: bold;
-    color: #053A42;
-    font-size: 32px;
-    text-align: center;
-    line-height: 56px;
-    letter-spacing: 3px;
-    padding-bottom: 40px;
-
+/* Botón */
+.dar-en-adopcion-boton {
+  margin-top: 20px;
 }
 
-.dar-en-adopcion-boton{
-    text-align: center;
-    padding-bottom: 20px;
+.dar-en-adopcion-boton a {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background-color: #0096a6;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-.dar-en-adopcion-boton a{
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    text-decoration: none;
-    color: white;
-    border: solid;
-    border-color: #006272;
-    border-radius: 15px;
-    border-width: 1.8px;
-    padding: 10px 15px;
-    background: #009FB9;
-    line-height: 24px;
-    letter-spacing: 0px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.dar-en-adopcion-boton a:hover {
+  background-color: #007b8e;
+  color: white;
 }
 
+/* Reutilizable botón secundario */
 .btn-status {
-  background-color: #009FB9;
+  background-color: #0096a6;
   border: 1.8px solid #006272;
   border-radius: 12px;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-status:hover {
-  background-color: #FFF9E9;
-  border: 1.8px solid #006272;
-  color: #053A42;
+  background-color: #fff8f0;
+  color: #053a42;
+  border-color: #006272;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dar-en-adopcion-contenido {
+    padding: 30px 20px;
+  }
+
+  .dar-en-adopcion-tittle p {
+    font-size: 36px;
+  }
+
+  .dar-en-adopcion-texto p {
+    font-size: 20px;
+  }
+
+  .dar-en-adopcion-boton a {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .dar-en-adopcion-display img {
+    display: none;
+  }
 }

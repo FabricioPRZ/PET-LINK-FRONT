@@ -1,48 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Busca mascotas disponibles para adopción en PetLink">
     <link rel="stylesheet" href="adoptar.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
     <script src="/header.js" defer></script>
+    <title>Mascotas para Adopción | PetLink</title>
 </head>
 <body>
     <petlink-header></petlink-header>
 
-    <div class="adoptar-main">
-        <section class="adoptar-busqueda">
-            <p>Buscar mascotas por:</p>
-            <div class="adoptar-filtros">
-                <select name="especie" id="especie-select" class="styled-select">
-                    <option value="" selected>Todas las especies</option>
-                </select>
+    <main class="main-container">
+        <section class="search-section">
+            <h1>Encuentra tu compañero perfecto</h1>
+            <p class="search-description">Filtra nuestras mascotas disponibles para encontrar a tu nuevo mejor amigo</p>
+            
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="especie-select">Especie</label>
+                    <select name="especie" id="especie-select" class="styled-select">
+                        <option value="" selected>Todas las especies</option>
+                        <!-- Opciones se llenarán dinámicamente -->
+                    </select>
+                </div>
                 
-                <select name="tamaño" id="tamano-select" class="styled-select">
-                    <option value="" selected>Todos los tamaños</option>
-                    <option value="Pequeño">Pequeño</option>
-                    <option value="Mediano">Mediano</option>
-                    <option value="Grande">Grande</option>
-                </select>
+                <div class="filter-group">
+                    <label for="tamano-select">Tamaño</label>
+                    <select name="tamaño" id="tamano-select" class="styled-select">
+                        <option value="" selected>Todos los tamaños</option>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
 
-                <select name="sexo" id="sexo-select" class="styled-select">
-                    <option value="" selected>Todos</option>
-                    <option value="Macho">Macho</option>
-                    <option value="Hembra">Hembra</option>
-                </select>
+                <div class="filter-group">
+                    <label for="sexo-select">Sexo</label>
+                    <select name="sexo" id="sexo-select" class="styled-select">
+                        <option value="" selected>Todos</option>
+                        <option value="Macho">Macho</option>
+                        <option value="Hembra">Hembra</option>
+                    </select>
+                </div>
 
-                <button class="icon-buscar" id="buscar-btn">
+                <button type="button" class="search-button" id="buscar-btn">
                     Buscar
-                    <img src="/src/public/img/huella_buscar.svg" alt="" id="huella-buscar"> 
+                    <span class="button-icon">🔍</span>
                 </button>
             </div>
         </section>
-    </div>
 
-    <div class="cards-container" id="cards-container">
-        <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
-    </div>
+        <section class="pets-results">
+            <h2 class="results-title">Mascotas disponibles</h2>
+            <div class="cards-container" id="cards-container">
+                <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
+            </div>
+        </section>
+    </main>
 
     <script src="adoptarFilter.js"></script>
 </body>

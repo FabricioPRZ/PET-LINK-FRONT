@@ -1,210 +1,264 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --primary-color: #009FB9;
+  --primary-dark: #006272;
+  --secondary-color: #F08224;
+  --secondary-dark: #C76919;
+  --background-light: #FFF9E9;
+  --text-dark: #053A42;
+  --text-light: #FFFFFF;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-
+/* Base Styles */
 body {
-    background-color: #FFF9E9;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-.adoptar-main{
-    padding-top: 40px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.adoptar-busqueda{
-    background-color: #009FB9;
-    padding-left: 42.5px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    width: 885px;
-    border-radius: 15px;
-}
-
-.adoptar-busqueda p{
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    padding-bottom: 20px;
-}
-
-.adoptar-filtros{
-    display: flex;
-    gap: 20px;
-}
-
-.adoptar-filtros select{
-    width: 200px;
-    height: 44px;
-    background-color: white;
-    border: 1px solid #000;
-    border-radius: 25px;
-}
-
-select.styled-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F08224'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 24px;
-    padding-left: 30px;
-    padding-right: 40px;
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-select.styled-select option {
-    color: #000;
-    font-size: 20px;
-    padding: 10px;
-}
-
-select.styled-select:focus {
-    outline: none;
-}
-
-select.styled-select:invalid {
-    color: #fff;
-}
-
-.icon-buscar{
-    gap: 9px;
-    display: flex;
-    align-items: center;
-    background-color: #F08224;
-    border-radius: 25px;
-    padding-left: 22px;
-    padding-right: 22px;
-    
-}
-
-.icon-buscar a{
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-#huella-buscar{
-    width: 18px;
-    height: 18px;
-}
-
-.cards-container {
-  display: flex;
-  gap: 55px;
-  padding: 0 0;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  justify-content: center;
-}
-
-.pet-card {
-  background-color: #FFF9E9;
-  background-image: linear-gradient(rgba(255, 249, 135, 0.1), rgba(255, 249, 135, 0.1)), 
-    url("/Iconos/Petlink_fondo_huellas.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--background-light);
   font-family: 'Poppins', sans-serif;
-  border: 3px solid #DC6E10;
-  border-radius: 20px;
-  padding: 15px;
-  min-width: 180px;
-  max-width: 180px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Main Container */
+.adoptar-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Search Section */
+.adoptar-busqueda {
+  background-color: var(--primary-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+}
+
+.adoptar-busqueda p {
+  color: var(--text-light);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.adoptar-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Select Styles */
+.styled-select {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F08224'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.styled-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 130, 36, 0.3);
+}
+
+.styled-select option {
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+/* Search Button */
+.icon-buscar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+.icon-buscar:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+}
+
+.icon-buscar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#huella-buscar {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+/* Pets Cards Container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Pet Card */
+.pet-card {
+  background-color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--box-shadow);
 }
 
 .pet-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .pet-image {
-  width: 140px;
-  height: 140px;
-  border-radius: 15px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  margin-bottom: 10px;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .pet-info {
-  text-align: left;
-  margin-bottom: 15px;
+  padding: 1.2rem;
 }
 
 .pet-info-row {
   display: flex;
-  margin-bottom: 5px;
-  font-size: 14px;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .pet-info-label {
   font-weight: 600;
-  color: #333;
-  min-width: 60px;
+  color: var(--primary-dark);
+  min-width: 80px;
 }
 
 .pet-info-value {
-  color: #666;
-  margin-left: 10px;
+  color: var(--text-dark);
 }
 
+/* Buttons */
 .pet-buttons {
   display: flex;
-  gap: 8px;
-  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
 }
 
 .btn {
-  padding: 6px 9px;
-  border: none;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
+  flex: 1;
+  padding: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  border: 2px solid transparent;
 }
 
 .btn-status {
-  background-color: #009FB9;
-  border: 1.8px solid #006272;
-  border-radius: 12px;
-  color: white;
-  font-size: 12px;
-  width: 140px;
-  height: 30px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-color: var(--primary-dark);
 }
 
 .btn-status:hover {
-  background-color: #FFF9E9;
-  border: 1.8px solid #006272;
-  color: #053A42;
+  background-color: var(--primary-dark);
 }
 
 .btn-status-eliminar {
-  background-color: #F08224;
-  border: 1.8px solid #954806;
-  border-radius: 12px;
-  color: white;
-  font-size: 12px;
-  width: 140px;
-  height: 30px;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border-color: var(--secondary-dark);
 }
 
 .btn-status-eliminar:hover {
-  background-color: #FFF9E9;
-  border: 1.8px solid #954806;
-  color: #053A42;
+  background-color: var(--secondary-dark);
 }
 
+/* See More Button */
+.ver-mas-btn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.ver-mas-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .adoptar-filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .styled-select, .icon-buscar {
+    width: 100%;
+  }
+  
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .adoptar-main {
+    padding: 1rem;
+  }
+  
+  .adoptar-busqueda {
+    padding: 1.5rem;
+  }
+  
+  .adoptar-busqueda p {
+    font-size: 1.2rem;
+  }
+  
+  .pet-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}

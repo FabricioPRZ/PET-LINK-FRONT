@@ -1,185 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario para adoptar una mascota a través de PetLink">
     <link rel="stylesheet" href="formulario-adoptar.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
     <script src="/header.js" defer></script>
+    <title>Formulario de Adopción | PetLink</title>
 </head>
 
 <body>
     <petlink-header></petlink-header>
-    <h1>Formulario para adoptar una mascota </h1>
 
+    <main class="main-container">
+        <header class="form-header">
+            <h1>Formulario para adoptar una mascota</h1>
+            <p class="form-intro">Completa este formulario para iniciar el proceso de adopción. Nos ayudará a conocer
+                mejor tu situación y asegurar que la mascota encuentre un hogar adecuado.</p>
+        </header>
 
-    <div class="datos-container">
-        <section class="datos-adoptante">
-            <h2>Datos personales del Adoptante </h2>
-            <br>
-            <section class="form">
-                <div>
-                    <label for="">Nombre (s):</label>
-                    <input type="text" name="" id="" placeholder="Llenar formulario">
-                </div>
+        <form id="adoption-form" class="adoption-form" aria-labelledby="form-title">
+            <div class="form-section">
+                <h2 id="personal-data-title">Datos personales del adoptante</h2>
 
-
-                <div>
-                    <label for="">¿Permiten mascotas en la vivienda?:</label>
-                    <select name="" id="" class="styled-select">
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option value="">Sí</option>
-                        <option value="">No</option>
-                    </select>
-                </div>
-            </section>
-            <br>
-
-
-            <section class="form-apellidos">
-                <div class="apellidos">
-                    <div class="apellido-paterno">
-                        <label for="">Apellido paterno:</label>
-                        <input type="text" name="" id="apellido-paterno" placeholder="Llenar formulario">
-                    </div>
-                    <div class="apellido-materno">
-                        <label for="">Apellido materno:</label>
-                        <input type="text" name="" id="apellido-materno" placeholder="Llenar formulario">
-                    </div>
-                </div>
-
-                <div class="espacio-mascota">
-                    <label for="">Foto del espacio de la mascota:</label>
-                    <div class="file-input-container">
-                        <input type="file" name="" id="espacio-mascota" class="file-input">
-                        <label for="espacio-mascota" class="file-input-label">
-                            <span>Subir imagen</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-            <br>
-
-            <section class="form-edad">
-                <div class="edad-inputs">
-                    <div class="edad">
-                        <label for="">Edad:</label>
-                        <input type="number" id="edad" placeholder="Llenar formulario">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">Nombre(s):</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Carlos" required>
                     </div>
 
-                    <div class="ine-input">
-                        <label for="">Identificación (INE):</label>
-                        <div class="file-input-container">
-                            <input type="file" name="" id="INE" class="file-input">
-                            <label for="INE" class="file-input-label">
-                                <span>Subir imagen</span>
+                    <div class="form-group">
+                        <label for="apellido-paterno">Apellido paterno:</label>
+                        <input type="text" id="apellido-paterno" name="apellido-paterno" placeholder="Ej: Pérez"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellido-materno">Apellido materno:</label>
+                        <input type="text" id="apellido-materno" name="apellido-materno" placeholder="Ej: López">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" min="18" max="99" placeholder="Ej: 28" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo" placeholder="Ej: ejemplo@mail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ocupacion">Ocupación:</label>
+                        <input type="text" id="ocupacion" name="ocupacion" placeholder="Ej: Ingeniero, Estudiante"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="INE">Identificación (INE):</label>
+                        <div class="file-upload">
+                            <input type="file" id="INE" name="INE" accept="image/*,.pdf" required>
+                            <label for="INE" class="file-upload-label">
+                                <span class="file-upload-text">Subir documento</span>
                             </label>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <h2>Información sobre el entorno
-                    <br>familiar
-                </h2>
-            </section>
-            <br>
+            <div class="form-section">
+                <h2 id="family-info-title">Información sobre el entorno familiar</h2>
 
-            <section class="form">
-                <div>
-                    <label for="">Ocupación:</label>
-                    <input type="text" name="" id="" placeholder="Llenar formulario">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="personas-vivienda">¿Con cuántas personas vives?</label>
+                        <input type="number" id="personas-vivienda" name="personas-vivienda" min="1" max="20"
+                            placeholder="Ej: 3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hay-ninos">¿Hay niños en casa?</label>
+                        <select id="hay-ninos" name="hay-ninos" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="permite-mascotas">¿Permiten mascotas en la vivienda?</label>
+                        <select id="permite-mascotas" name="permite-mascotas" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                 </div>
+            </div>
 
+            <div class="form-section">
+                <h2 id="home-info-title">Información sobre el hogar</h2>
 
-                <div>
-                    <label for="">¿Con cuantas personas vives?</label>
-                    <input type="number" name="" id="" placeholder="Llenar formulario">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="tipo-vivienda">¿En qué tipo de vivienda reside?</label>
+                        <select id="tipo-vivienda" name="tipo-vivienda" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="casa">Casa</option>
+                            <option value="departamento">Departamento</option>
+                            <option value="monotipo">Departamento monotipo</option>
+                            <option value="duplex">Dúplex</option>
+                            <option value="residencial">Residencial</option>
+                            <option value="hacienda">Hacienda</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo-propiedad">¿La vivienda es propia o renta?</label>
+                        <select id="tipo-propiedad" name="tipo-propiedad" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="propia">Propia</option>
+                            <option value="renta">Renta</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="espacio-mascota">Foto del espacio destinado para la mascota:</label>
+                        <div class="file-upload">
+                            <input type="file" id="espacio-mascota" name="espacio-mascota" accept="image/*" required>
+                            <label for="espacio-mascota" class="file-upload-label">
+                                <span class="file-upload-text">Subir imagen</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </section>
-            <br>
+            </div>
 
+            <div class="form-section">
+                <h2 id="pet-experience-title">Experiencia con mascotas</h2>
 
-            <section class="form">
-                <div>
-                    <label for="">Correo electrónico:</label>
-                    <input type="text" name="" id="" placeholder="Llenar formulario">
-                    <br>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="experiencia">¿Ha tenido mascotas antes?</label>
+                        <select id="experiencia" name="experiencia" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="historial-mascotas">Si ha tenido mascotas, ¿qué pasó con ellas?</label>
+                        <textarea id="historial-mascotas" name="historial-mascotas"
+                            placeholder="Describe brevemente tu experiencia previa con mascotas..."></textarea>
+                    </div>
                 </div>
+            </div>
 
-
-                <div>
-                    <label for="">¿Hay niños en casa?</label>
-                    <select name="" id="" class="styled-select">
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option value="">Sí</option>
-                        <option value="">No</option>
-                    </select>
-                </div>
-            </section>
-
-
-            <section class="form-tittles">
-                <h2>Información sobre el hogar</h2>
-                <h2>Experiencia con mascotas </h2>
-            </section>
-            <br>
-
-
-            <section class="form-vive">
-                <div>
-                    <label for="">¿En que tipo de vivienda reside?</label>
-                    <select name="" id="" class="styled-select">
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option value="">Casa</option>
-                        <option value="">Departamento</option>
-                        <option value="">Departamento monotipo</option>
-                        <option value="">Duplex</option>
-                        <option value="">Residencial</option>
-                        <option value="">Hacienda</option>
-                    </select>
-                    <br>
-                </div>
-
-
-                <div>
-                    <label for="">¿Ha tenido mascotas Antes?</label>
-                    <select name="" id="" class="styled-select">
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option value="">Sí</option>
-                        <option value="">No</option>
-                    </select>
-                </div>
-            </section>
-
-
-            <section class="form-vivienda">
-                <div>
-                    <label for="">¿La vivienda es propia o renta?</label>
-                    <select name="" id="" class="styled-select">
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option value="">Propia</option>
-                        <option value="">Renta</option>
-                    </select>
-                    <br>
-                </div>
-
-
-                <div>
-                    <label for="">¿Qué paso con ellas?</label>
-                    <textarea name="" id="masotas-anteriores" placeholder="Llenar formulario"></textarea>
-                </div>
-            </section>
-
-
-            <section class="adoptar-boton">
-                <a class="btn btn-status">Enviar formulario</a>
-            </section>
-        </section>
-    </div>
-
-
+            <div class="form-actions">
+                <button type="submit" class="submit-button">
+                    Enviar formulario
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

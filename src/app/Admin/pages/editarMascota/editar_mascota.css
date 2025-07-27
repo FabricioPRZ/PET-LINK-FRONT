@@ -1,423 +1,352 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --primary-color: #009FB9;
+  --primary-dark: #006272;
+  --secondary-color: #F08224;
+  --secondary-dark: #C76919;
+  --background-light: #FFF9E9;
+  --text-dark: #053A42;
+  --text-light: #FFFFFF;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
+/* Base Styles */
 body {
-    background-color: #FFF9E9;
-    font-family: 'Poppins', sans-serif;
+  background-color: var(--background-light);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding-bottom: 2rem;
 }
 
-
-h1{
-    font-family: 'Fredoka', sans-serif;
-    font-weight: bold;
-    color: #009FB9;
-    font-size: 64px;
-    line-height: 45px;
-    letter-spacing: 3px;
-    text-align: center;
-    padding-top: 60px;
-    padding-bottom: 40px;
+/* Main Container */
+.datos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.info-container{
-    padding-bottom: 30px;
+/* Header */
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.solicitud-info{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 20px;
-    border: solid;
-    background-color: #FEE2C2;
-    height: 162px;
-    border-radius: 25px;
-    border-color: #F08224;
-    border-width: 1.8px;
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
 }
 
-.solicitud-info p{
-    font-family: 'poppins';
-    font-size: 20px;
+/* Request Info */
+.info-container {
+  background-color: rgba(254, 226, 194, 0.3);
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-label{
-    font-family: 'Fredoka', sans-serif;
-    color: #009FB9;
-    font-size: 30px;
-    line-height: 45px;
-    letter-spacing: 3px;
+.solicitud-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.form input, select, textarea {
-    background-color: white;
-    border: 3px solid #F08224;
-    border-radius: 15px;
-    height: 54px;
-    width: 600px;
-    display: flex;
-    
+.solicitud-info p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
-.form ::placeholder{
-    font-family: 'poppins';
-    color: #FEE2C2;
-    font-size: 25px;
-    text-align: center;
+/* Form Sections */
+.datos-mascota {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
-
-#descripcion-mascota{
-    width: 1260px;
-    height: 90px;
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.form{
-    display: flex;
-    gap: 60px;
+.form-group {
+  flex: 1;
+  min-width: 250px;
 }
 
-.datos-container{
-    justify-content: center;
-    align-items: center;
-    display: flex;
+/* Form Elements */
+label {
+  display: block;
+  font-family: 'Fredoka', sans-serif;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
-.fotos-mascota{
-    padding-bottom: 30px;
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
 }
 
-.fotos-input{
-    display: flex;
-    gap: 199px;
-    padding-top: 28px;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 159, 185, 0.2);
 }
 
-.fotos-input input{
-    width: 284px;
-    height: 221px;
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
-input[type="file"]::file-selector-button{
-    background-color: white;
-    border: 3px solid #F08224;
-    border-radius: 15px;
-    height: 221px;
-    width: 284px;
-    display: flex;
+/* File Inputs */
+.fotos-mascota {
+  margin: 2rem 0;
 }
 
-/* Añade esto al final de tu archivo CSS */
-
-/* Ajustes para los placeholders */
-::placeholder {
-    font-family: 'poppins';
-    color: #FEE2C2;
-    font-size: 25px;
-    text-align: center;
-    line-height: 54px; /* Añade esta línea para centrar verticalmente */
+.fotos-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-/* Ajuste especial para el textarea */
-#descripcion-mascota::placeholder {
-    line-height: 90px; /* Altura igual a la del textarea */
-    text-align: center;
-}
-
-/* Estilos para los inputs de archivo */
 .file-input-container {
-    position: relative;
-    width: 284px;
-    height: 221px;
+  position: relative;
+  width: 200px;
+  height: 200px;
 }
 
 .file-input {
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
 }
-
-/* ...resto de tu CSS... */
 
 .file-input-label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border: 3px solid #F08224;
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 2px dashed var(--secondary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.check-svg-container {
-    width: 90px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.file-input-label span {
-    font-family: 'Poppins', sans-serif;
-    color: #FEE2C2;
-    font-size: 20px;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.file-input-label .upload-icon {
-    margin-bottom: 10px;
+.file-input-label:hover {
+  background-color: rgba(240, 130, 36, 0.05);
 }
 
 .upload-icon {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
 }
 
-
-
-/* Estilos para los selects */
-select.styled-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F08224'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 24px;
-    padding-right: 40px;
-    color: #FEE2C2;
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    cursor: pointer;
-    text-align: center;
+.file-input-label span {
+  font-family: 'Poppins', sans-serif;
+  color: var(--secondary-color);
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-select.styled-select option {
-    color: #F08224;
-    font-size: 25px;
-    padding: 10px;
+.check-svg-container {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
 }
 
-select.styled-select:focus {
-    outline: none;
+/* Select Styling */
+.styled-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F08224'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  padding-right: 2.5rem;
 }
 
-select.styled-select:invalid {
-    color: #FEE2C2;
-}
-
-/* Estilo para el dropdown del select */
-select.styled-select option {
-    background-color: white;
-}
-
-select.styled-select option:hover {
-    background-color: #FFF9E9;
-}
-
-.registrar-boton{
-    text-align: center;
-    padding-bottom: 50px;
-    padding-top: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 50px;
-    padding-left: 45px;
-}
-
-.boton-aceptar a{
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    text-decoration: none;
-    color: white;
-    border: solid;
-    border-color: #006272;
-    border-radius: 15px;
-    border-width: 1.8px;
-    padding: 10px 15px;
-    background: #009FB9;
-    line-height: 24px;
-    letter-spacing: 0px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.boton-rechazar a{
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    text-decoration: none;
-    color: white;
-    border: solid;
-    border-color: #954806;
-    border-radius: 15px;
-    border-width: 1.8px;
-    padding: 10px 15px;
-    background: #F08224;
-    line-height: 24px;
-    letter-spacing: 0px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-aceptar-status {
-  background-color: #009FB9;
-  border: 1.8px solid #006272;
-  border-radius: 12px;
-  color: white;
-  font-size: 25px;
-}
-
-.btn-rechazar-status:hover {
-  background-color: #FFF9E9;
-  border: 1.8px solid #F08224;
-  color: #954806;
-}
-
-.btn-rechazar-status {
-  background-color: #F08224;
-  border: 1.8px solid #954806;
-  border-radius: 12px;
-  color: white;
-  font-size: 25px;
-}
-
-.btn-aceptar-status:hover {
-  background-color: #FFF9E9;
-  border: 1.8px solid #006272;
-  color: #053A42;
-}
-
-
-/* ...tu CSS anterior... */
-
-/* Añade esto al final de tu archivo CSS para el multiselect de vacunas */
+/* Vaccines Multiselect */
 .vacunas-multiselect {
-    position: relative;
-    width: 600px;
-    height: 54px;
+  position: relative;
+  width: 100%;
 }
 
 .vacunas-select {
-    background-color: white;
-    border: 3px solid #F08224;
-    border-radius: 15px;
-    height: 54px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    color: #FEE2C2;
-    padding-left: 15px;
-}
-
-.vacunas-select span {
-    width: 100%;
-    user-select: none;
+  background-color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  height: 54px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  padding: 0 1rem;
 }
 
 .vacunas-dropdown {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: white;
-    border: 3px solid #F08224;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-    display: none;
-    flex-direction: column;
-    z-index: 99;
-    padding: 15px 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+  padding: 0.5rem;
+  margin-top: -2px;
 }
 
-/* ...tu CSS anterior permanece igual... */
-
-/* Ajustes para las opciones del multiselect de vacunas */
-.vacunas-dropdown label {
-    display: flex;
-    align-items: center;
-    font-size: 22px;
-    color: #F08224;
-    padding-left: 20px; /* padding izquierdo para casilla y texto */
-    line-height: 24px;
-    letter-spacing: 0px;
-    margin-bottom: 6px; /* espacio entre opciones */
-}
-
-/* Ajuste para el checkbox */
-.vacunas-dropdown input[type="checkbox"] {
-    margin-right: 12px;
-    accent-color: #F08224;
-    width: 18px;
-    height: 18px;
-    padding-left: 20px; /* padding izquierdo para checkbox */
-}
-
-.vacunas-dropdown label span {
-    font-size: 22px;
-    line-height: 24px;
-    letter-spacing: 0px;
-    padding-left: 20px; /* padding izquierdo para texto, si usas <span> para texto */
-}
-
-/* Si el texto no está en un <span>, el padding del label es suficiente */
-/* ...resto de tu CSS permanece igual... */
-
-/* Show dropdown when active */
 .vacunas-select.active .vacunas-dropdown {
-    display: flex;
+  display: flex;
 }
 
-.vacunas-select.active {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+.vacunas-dropdown label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
-.vacunas-select:focus {
-    outline: none;
+.vacunas-dropdown input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--secondary-color);
 }
 
-/* ...resto de tu CSS permanece igual... */
-/* ...resto de tu CSS... */
-
-/* Eliminar flechas de los inputs de tipo number (Chrome, Safari, Edge) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/* Action Buttons */
+.registrar-boton {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
-/* Eliminar flechas en Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: var(--border-radius);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  text-align: center;
+  min-width: 180px;
+  border: 2px solid transparent;
 }
 
-/* Centrar el texto del placeholder del select de vacunas */
-#vacunas-placeholder {
+.btn-aceptar-status {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.btn-aceptar-status:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-rechazar-status {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-dark);
+}
+
+.btn-rechazar-status:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .fotos-input {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .registrar-boton {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
     width: 100%;
-    display: block;
-    text-align: center;
+  }
 }
 
-/* ...resto de tu CSS... */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .solicitud-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .datos-mascota {
+    padding: 1.5rem;
+  }
+  
+  .file-input-container {
+    width: 100%;
+    height: 150px;
+  }
+}

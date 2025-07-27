@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,7 @@
   <script src="/header.js" defer></script>
   <script src="/principal.js" defer></script>
 </head>
+
 <body>
 
   <petlink-header></petlink-header>
@@ -16,33 +18,22 @@
   <section class="hero">
     <div class="hero-text">
       <h1>Ellos te esperan con el <br> corazón lleno de <br> esperanza</h1><br><br>
-      <p>En PetLink sabemos que no es fácil  <br> dar en adopción, por eso nos <br> encargamos de que cada <br> adoptante cumpla con las <br> condiciones necesarias para <br> brindarle un hogar seguro.</p><br><br>
+      <p>En PetLink sabemos que no es fácil <br> dar en adopción, por eso nos <br> encargamos de que cada <br> adoptante
+        cumpla con las <br> condiciones necesarias para <br> brindarle un hogar seguro.</p><br><br>
       <div class="btns">
-        <a href="/pages/registro.html" class="btn primary">Registrarse</a>
-        <a href="/pages/iniciosesion.html" class="btn secondary">Iniciar sesión</a>
+        <a href="/src/app/pages/eleccionUsuario/eleccionusuario.html" class="btn primary">Registrarse</a>
+        <a href="/src/app/pages/eleccionUsuario/eleccionusuario.html" class="btn secondary">Iniciar sesión</a>
       </div>
     </div>
   </section>
 
-  <div class="carousel-container">
-    <h2><br><br>Hoy puedes conocer a quién te enseñará lo que es el amor <br> incondicional <br><br></h2>
-    <div class="carousel-wrapper">
-      <button class="nav-arrow left">&#x276E;</button>
-      <button class="nav-arrow right">&#x276F;</button>
-      <div class="cards-container">
-        <!-- 🐾 Las tarjetas se insertarán dinámicamente aquí -->
-      </div>
-    </div>
-    <br>
-    <button class="know-more-btn" onclick="window.location.href='/pages/adoptar.html'">Conocer más</button>
-  </div>
-
   <section class="stats">
     <h2><br>Conoce nuestras estadísticas</h2>
     <div class="stats-content">
-      <img src="./otros/grafica principal.png" alt="Gráfica" class="graph">
+      <img src="/src/public/otros/grafica principal.png" alt="Gráfica" class="graph">
       <div class="text">
-        <p>Desde que iniciamos <br> con este proyecto el <br> total de las mascotas <br> que ahora tienen un <br> hogar son:</p>
+        <p>Desde que iniciamos <br> con este proyecto el <br> total de las mascotas <br> que ahora tienen un <br> hogar
+          son:</p>
         <div class="counter"><span class="text">101</span></div>
       </div>
     </div>
@@ -50,7 +41,7 @@
 
   <section class="help">
     <h2>¿Estás interesado en ayudar o eres una asociación o refugio?</h2>
-    <img src="./otros/únete.png" alt="">
+    <img src="/src/public/otros/únete.png" alt="">
     <p>¡Únete a nosotros! Tu ayuda es importante <br> para darle un hogar a los animales que <br> más nos necesitan</p>
     <div class="contact">
       <h4>
@@ -58,10 +49,10 @@
       </h4>
       <ul>
         <li>
-          <img src="./Iconos/teléfono.png">961-242-8270
+          <img src="/src/public/Iconos/teléfono.png">961-242-8270
         </li>
         <li>
-          <img src="./Iconos/correo.png">petlinkoficial@gmail.com
+          <img src="/src/public/Iconos/correo.png">petlinkoficial@gmail.com
         </li>
       </ul>
     </div>
@@ -69,20 +60,22 @@
 
   <footer class="footer">
     <div class="petlinkfooter">
+
       <div class="contact-info">
-        <img src="/otros/infocontacto.png" alt="">
+        <img src="/src/public/otros/infocontacto.png" alt="">
       </div>
 
       <div class="nav-links">
         <a href="/index.html">Inicio</a>
-        <a href="/pages/nosotros.html">Nosotros</a>
-        <a href="/pages/adoptar.html">Adoptar</a>
-        <a href="/pages/dar_en_adopcion.html">Dar en adopción</a>
-        <a href="/pages/antes-de-adoptar.html">Antes de adoptar</a>
+        <a href="src/app/pages/nosotros.html">Nosotros</a>
+        <a href="src/app/User/pages/adoptar/adoptar.html">Adoptar</a>
+        <a href="src/spp/User/pages/darAdopcion/dar_en_adopcion.html">Dar en adopción</a>
+        <a href="src/app/pages/antesAdoptar/antes-de-adoptar.html">Antes de adoptar</a>
       </div>
 
+
       <div class="logo-section">
-        <img src="/Iconos/Logo PetLink.svg" alt="PetLink Logo">
+        <img src="/src/public/Iconos/Logo PetLink.svg" alt="PetLink Logo">
         <div class="legal-links">
           <a href="#terminos">Términos y condiciones</a>
           <a href="#privacidad">Avisos de privacidad</a>
@@ -92,4 +85,5 @@
   </footer>
 
 </body>
+
 </html>

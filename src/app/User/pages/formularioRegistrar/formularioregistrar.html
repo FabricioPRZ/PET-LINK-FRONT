@@ -1,92 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario para registrar mascotas</title>
-    <link rel="stylesheet" href="formularioregistrar.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Mascota | PetLink</title>
+    <link rel="stylesheet" href="formularioregistrar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
     <script src="/header.js" defer></script>
 </head>
 
 <body>
     <petlink-header></petlink-header>
+    
     <main class="form-container">
-        <h1>Formulario para registrar Mascotas</h1>
-        <form>
+        <h1 class="form-title">Formulario para registrar Mascotas</h1>
+        
+        <form class="pet-form">
             <div class="form-grid">
+                <!-- Primera fila -->
                 <div class="input-group">
-                    <label>Nombre:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-name">Nombre:</label>
+                    <input type="text" id="pet-name" placeholder="Ej: Luna" required>
                 </div>
+                
                 <div class="input-group">
-                    <label>Especie:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-species">Especie:</label>
+                    <input type="text" id="pet-species" placeholder="Ej: Perro, Gato" required>
                 </div>
+                
                 <div class="input-group">
-                    <label>Sexo:</label>
-                    <select>
-                        <option disabled selected>Elige una respuesta</option>
+                    <label for="pet-gender">Sexo:</label>
+                    <select id="pet-gender" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
                         <option>Macho</option>
                         <option>Hembra</option>
                     </select>
                 </div>
+                
+                <!-- Segunda fila -->
                 <div class="input-group">
-                    <label>Peso:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-weight">Peso (kg):</label>
+                    <input type="number" id="pet-weight" placeholder="Ej: 4.5" step="0.1" min="0" required>
                 </div>
+                
                 <div class="input-group">
-                    <label>Tamaño:</label>
-                    <select>
-                        <option disabled selected>Elige una respuesta</option>
+                    <label for="pet-size">Tamaño:</label>
+                    <select id="pet-size" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
                         <option>Pequeño</option>
                         <option>Mediano</option>
                         <option>Grande</option>
                     </select>
                 </div>
+                
                 <div class="input-group">
-                    <label>Esterilizado:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-sterilized">Esterilizado:</label>
+                    <select id="pet-sterilized" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option>Sí</option>
+                        <option>No</option>
+                    </select>
                 </div>
+                
+                <!-- Tercera fila -->
                 <div class="input-group">
-                    <label>Discapacitado:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-disabled">Discapacitado:</label>
+                    <select id="pet-disabled" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option>Sí</option>
+                        <option>No</option>
+                    </select>
                 </div>
+                
                 <div class="input-group">
-                    <label>Desparasitado:</label>
-                    <input type="text" placeholder="Llenar formulario" />
+                    <label for="pet-dewormed">Desparasitado:</label>
+                    <select id="pet-dewormed" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option>Sí</option>
+                        <option>No</option>
+                    </select>
                 </div>
+                
                 <div class="input-group">
-                    <label>Vacunas:</label>
-                    <select>
-                        <option disabled selected>Elige una respuesta</option>
-                        <option>Completas</option>
-                        <option>Incompletas</option>
-                        <option>Ninguna</option>
+                    <label for="pet-vaccinated">Vacunado:</label>
+                    <select id="pet-vaccinated" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option>Sí</option>
+                        <option>No</option>
                     </select>
                 </div>
             </div>
 
-            <div class="input-group description">
-                <label>Descripción de la mascota:</label>
-                <textarea placeholder="Llenar formulario"></textarea>
+            <!-- Descripción -->
+            <div class="input-group full-width">
+                <label for="pet-description">Descripción de la mascota:</label>
+                <textarea id="pet-description" placeholder="Describe su personalidad, características físicas, comportamiento..." required></textarea>
             </div>
 
-            <div class="input-group images">
+            <!-- Fotos -->
+            <div class="input-group full-width">
                 <label>Fotos de la mascota (mínimo 3)</label>
-                <div class="upload-grid">
-                    <div class="upload-box">Subir imagen</div>
-                    <div class="upload-box">Subir imagen</div>
-                    <div class="upload-box">Subir imagen</div>
+                <div class="upload-container">
+                    <label class="upload-box">
+                        <input type="file" accept="image/*" required>
+                        <span>+ Subir imagen</span>
+                    </label>
+                    <label class="upload-box">
+                        <input type="file" accept="image/*" required>
+                        <span>+ Subir imagen</span>
+                    </label>
+                    <label class="upload-box">
+                        <input type="file" accept="image/*" required>
+                        <span>+ Subir imagen</span>
+                    </label>
                 </div>
             </div>
 
+            <!-- Botón -->
             <div class="submit-container">
-                <button type="submit">Enviar formulario</button>
+                <button type="submit" class="submit-btn">
+                    Enviar formulario
+                </button>
             </div>
         </form>
     </main>
 </body>
-
 </html>

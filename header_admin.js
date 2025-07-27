@@ -82,7 +82,7 @@ class PetLinkHeader extends HTMLElement {
         <div class="navbar-container">
           <div class="logo-container">
             <div class="logo-circle">
-              <img class="logo-svg" src="/logos/PetLink Logo.svg" alt="PetLink Logo">
+              <img class="logo-svg" src="/src/public/logos/PetLink Logo.svg" alt="PetLink Logo">
             </div>
             <div class="logo_texto">
               <p>PetLink</p>
@@ -90,10 +90,10 @@ class PetLinkHeader extends HTMLElement {
           </div>
           <nav class="navbar">
             <a href="/index_admin.html">Inicio</a>
-            <a href="/administrador pages/adoptar_admin.html">Adoptar</a>
-            <a href="/administrador pages/formulario_registrar_admin.html">Dar en adopción</a>
-            <a href="/administrador pages/perfil_admin.html">Perfil</a>
-            <a href="/administrador pages/solicitudesdeadopcion.html">Solicitudes Adopción</a>
+            <a href="/src/app/Admin/pages/adoptar/adoptar_admin.html">Adoptar</a>
+            <a href="/src/app/Admin/pages/perfil_admin.html">Perfil</a>
+            <a href="/src/app/Admin/pages/solicitudesAdopcion/solicitudesdeadopcion.html">Solicitudes Adopción</a>
+            <a href="/src/app/Admin/pages/solicitudesRegistro/solicitudespararegistrar.html">Solicitudes Registro</a>
           </nav>
         </div>
       </header>

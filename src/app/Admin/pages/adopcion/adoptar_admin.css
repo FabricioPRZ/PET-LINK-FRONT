@@ -118,11 +118,15 @@ body {
 }
 
 /* Pets Cards Container */
+/* Pets Cards Container */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
   padding: 1rem 0;
+  max-width: 1200px; /* Añade un ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
+  justify-items: center; /* Centra las cards horizontalmente */
 }
 
 /* Pet Card */

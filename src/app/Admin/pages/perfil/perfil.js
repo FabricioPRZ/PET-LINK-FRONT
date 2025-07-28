@@ -264,6 +264,48 @@ function configurarEventosEdicion() {
         }
     });
 
+    // Configurar vista previa de archivo INE
+    const ineInput = document.getElementById('ine');
+    if (ineInput) {
+        ineInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('ine-preview');
+            
+            if (file) {
+                // Validar tamaño (5MB máximo)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('El archivo es demasiado grande. Máximo 5MB.');
+                    this.value = '';
+                    return;
+                }
+                
+                // Validar tipo de archivo
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+                if (!validTypes.includes(file.type)) {
+                    alert('Tipo de archivo no válido. Solo JPG, PNG o PDF.');
+                    this.value = '';
+                    return;
+                }
+                
+                // Mostrar vista previa para imágenes
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.innerHTML = `
+                            <img src="${e.target.result}" alt="Vista previa INE" 
+                                 style="max-width: 200px; max-height: 150px; border-radius: 4px; border: 1px solid #ddd;">
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = `<p>📄 ${file.name} (PDF)</p>`;
+                }
+            } else {
+                preview.innerHTML = '';
+            }
+        });
+    }
+
     // Formulario de edición
     const editForm = document.getElementById('form-editar-perfil');
     if (editForm) {
@@ -284,23 +326,67 @@ function configurarEventosEdicion() {
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<span>⏳</span> Guardando...';
 
+                // Crear FormData para manejar tanto datos como archivos
+                const formData = new FormData();
+                
+                // Agregar datos del formulario
+                const nombres = document.getElementById('nombres').value.trim();
+                const apellidoPaterno = document.getElementById('apellido_paterno').value.trim();
+                const apellidoMaterno = document.getElementById('apellido_materno').value.trim();
+                const correo = document.getElementById('correo').value.trim();
+                
+                // Validar campos requeridos
+                if (!nombres || !apellidoPaterno || !correo) {
+                    throw new Error('Por favor complete todos los campos requeridos');
+                }
+                
+                // Validar formato de correo
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(correo)) {
+                    throw new Error('Por favor ingrese un correo electrónico válido');
+                }
+                
+                formData.append('nombres', nombres);
+                formData.append('apellido_paterno', apellidoPaterno);
+                formData.append('apellido_materno', apellidoMaterno);
+                formData.append('correo', correo);
+                
+                // Agregar archivo INE si se seleccionó uno
+                const ineFile = document.getElementById('ine').files[0];
+                if (ineFile) {
+                    formData.append('ine', ineFile);
+                }
+
+                console.log('Enviando datos:', {
+                    nombres,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    correo,
+                    ineFile: ineFile ? ineFile.name : 'No seleccionado'
+                });
+
                 const response = await fetch(`http://44.208.231.53:7078/usuarios/${usuarioId}`, {
                     method: 'PUT',
                     headers: {
-                        'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
+                        // No agregar Content-Type para FormData, el navegador lo hace automáticamente
                     },
-                    body: JSON.stringify({
-                        nombres: document.getElementById('nombres').value.trim(),
-                        apellido_paterno: document.getElementById('apellido_paterno').value.trim(),
-                        apellido_materno: document.getElementById('apellido_materno').value.trim(),
-                        correo: document.getElementById('correo').value.trim()
-                    })
+                    body: formData
                 });
                 
+                console.log('Respuesta del servidor:', response.status, response.statusText);
+                
                 if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({}));
-                    throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+                    let errorMessage = `Error ${response.status}: ${response.statusText}`;
+                    
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.message || errorData.error || errorMessage;
+                    } catch (e) {
+                        // Si no se puede parsear JSON, usar mensaje por defecto
+                    }
+                    
+                    throw new Error(errorMessage);
                 }
 
                 const updatedUser = await response.json();
@@ -358,7 +444,6 @@ function mostrarMensajeExito(mensaje) {
     if (profileCard) {
         profileCard.prepend(successMessage);
         
-        // Eliminar mensaje después de 3 segundos
         setTimeout(() => {
             successMessage.remove();
         }, 3000);

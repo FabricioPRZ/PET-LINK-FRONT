@@ -3,7 +3,7 @@ function parseJWT(token) {
     try {
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         return JSON.parse(jsonPayload);
@@ -13,9 +13,9 @@ function parseJWT(token) {
     }
 }
 
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Obtener valores del formulario
     const correo = document.getElementById('correo').value.trim();
     const contraseña = document.getElementById('contraseña').value;
@@ -64,9 +64,9 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
         // Manejar errores del servidor
         if (!response.ok) {
-            const errorMessage = responseData.message || 
-                               responseData.error ||
-                               `Error ${response.status}: ${response.statusText}`;
+            const errorMessage = responseData.message ||
+                responseData.error ||
+                `Error ${response.status}: ${response.statusText}`;
             throw new Error(errorMessage);
         }
 
@@ -77,7 +77,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
         const requiredUserFields = ['correo'];
         const missingFields = requiredUserFields.filter(field => !responseData.usuario[field]);
-        
+
         if (missingFields.length > 0) {
             throw new Error('Datos de usuario incompletos');
         }
@@ -100,10 +100,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
         // Intentar desde responseData.usuario
         if (responseData.usuario) {
-            userId = responseData.usuario.id_usuario || 
-                     responseData.usuario.id || 
-                     responseData.usuario.userId || 
-                     responseData.usuario.user_id;
+            userId = responseData.usuario.id_usuario ||
+                responseData.usuario.id ||
+                responseData.usuario.userId ||
+                responseData.usuario.user_id;
         }
 
         // Si no se encontró, intentar desde JWT
@@ -148,11 +148,11 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         // Configurar redirección
         const redirectPaths = {
             'administrador': '/src/app/Admin/pages/adopcion/adoptar_admin.html',
-            'cedente': '/src/app/Admin/pages/pages/dashboard.html'
+            'cedente': '/src/app/User/pages/adoptar/adoptar.html'
         };
-        
+
         const redirectPath = redirectPaths[responseData.usuario.tipo_usuario] || '/perfil.html';
-        
+
         // Opción "Recordar email"
         if (recordar) {
             localStorage.setItem('rememberedEmail', correo);
@@ -167,10 +167,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     } catch (error) {
         console.error('Error en login:', error);
-        const errorMessage = error.message.includes('servidor') ? 
-            'Error en el servidor. Por favor intente más tarde.' : 
+        const errorMessage = error.message.includes('servidor') ?
+            'Error en el servidor. Por favor intente más tarde.' :
             error.message;
-        
+
         mostrarError(errorMessage);
     } finally {
         // Restaurar estado del botón
@@ -186,7 +186,7 @@ function mostrarError(mensaje) {
     // Limpiar errores anteriores
     const erroresAnteriores = document.querySelectorAll('.error-message');
     erroresAnteriores.forEach(el => el.remove());
-    
+
     // Crear elemento de error
     const errorElement = document.createElement('div');
     errorElement.className = 'error-message';
@@ -196,7 +196,7 @@ function mostrarError(mensaje) {
         </svg>
         <span>${mensaje}</span>
     `;
-    
+
     // Estilos del error
     errorElement.style.cssText = `
         display: flex;
@@ -210,7 +210,7 @@ function mostrarError(mensaje) {
         font-size: 14px;
         animation: fadeIn 0.3s ease-in-out;
     `;
-    
+
     // Agregar estilos dinámicamente
     const style = document.createElement('style');
     style.textContent = `
@@ -220,7 +220,7 @@ function mostrarError(mensaje) {
         }
     `;
     document.head.appendChild(style);
-    
+
     // Insertar en el formulario
     const formulario = document.getElementById('loginForm');
     if (formulario) {
@@ -230,7 +230,7 @@ function mostrarError(mensaje) {
 }
 
 // Cargar email recordado al iniciar la página
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     const rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail) {
         document.getElementById('correo').value = rememberedEmail;

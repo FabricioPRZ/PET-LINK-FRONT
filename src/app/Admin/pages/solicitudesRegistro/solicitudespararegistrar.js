@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>
                         <button class="action-btn btn-approve" data-id="${mascota.id}">Aprobar</button>
                         <button class="action-btn btn-reject" data-id="${mascota.id}">Rechazar</button>
-                        <button class="action-btn btn-view">Ver</button>
                     </td>
                 `;
 

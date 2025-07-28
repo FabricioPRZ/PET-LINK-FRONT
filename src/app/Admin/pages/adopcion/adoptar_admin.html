@@ -3,54 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLink - Administrar Mascotas</title>
     <link rel="stylesheet" href="adoptar_admin.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="/header_admin.js" defer></script>
 </head>
 <body>
     <petlink-header></petlink-header>
 
     <div class="adoptar-main">
-    <section class="adoptar-busqueda">
-        <p>Buscar mascotas por:</p>
-        <div class="adoptar-filtros">
-            
-            <select name="especie" id="especie-filter" class="styled-select">
-                <option value="" selected>Todas las especies</option>
-                <option value="Perro">Perro</option>
-                <option value="Gato">Gato</option>
-                <option value="Hamster">Hamster</option>
-                <option value="Tortuga">Tortuga</option>
-                <option value="Pájaro">Pájaro</option>
-                <option value="Conejo">Conejo</option>
-                <option value="Reptil">Reptil</option>
-            </select>
-            
+        <section class="adoptar-busqueda">
+            <p>Buscar mascotas por:</p>
+            <div class="adoptar-filtros">
+                <select name="especie" id="especie-filter" class="styled-select">
+                    <option value="" selected>Todas las especies</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="Tortuga">Tortuga</option>
+                    <option value="Pájaro">Pájaro</option>
+                    <option value="Conejo">Conejo</option>
+                    <option value="Reptil">Reptil</option>
+                </select>
 
-            <select name="tamano" id="tamano-filter" class="styled-select">
-                <option value="" selected>Todos los tamaños</option>
-                <option value="Pequeño">Pequeño</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Grande">Grande</option>
-            </select>
+                <select name="tamano" id="tamano-filter" class="styled-select">
+                    <option value="" selected>Todos los tamaños</option>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
 
-            <select name="sexo" id="sexo-filter" class="styled-select">
-                <option value="" selected>Todos los sexos</option>
-                <option value="macho">Macho</option>
-                <option value="hembra">Hembra</option>
-            </select>
+                <select name="sexo" id="sexo-filter" class="styled-select">
+                    <option value="" selected>Todos los sexos</option>
+                    <option value="macho">Macho</option>
+                    <option value="hembra">Hembra</option>
+                </select>
 
-            <button class="icon-buscar" id="filter-button">
-                Buscar
-                <img src="/src/public/img/huella_buscar.svg" alt="" id="huella-buscar"> 
-            </button>
-        </div>
-    </section>
+                <button class="icon-buscar" id="filter-button">
+                    Buscar
+                    <img src="/src/public/img/huella_buscar.svg" alt="" id="huella-buscar"> 
+                </button>
+            </div>
+        </section>
     </div>
 
     <div class="cards-container" id="pets-container">
         <!-- Las mascotas se cargarán aquí dinámicamente -->
+    </div>
+
+    <!-- Modal para editar mascota -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Mascota</h2>
+            <form id="editPetForm" enctype="multipart/form-data">
+                <input type="hidden" id="petId">
+                
+                <div class="form-group">
+                    <label for="editNombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editEspecie">Especie:</label>
+                    <select id="editEspecie" name="especie" required>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Hamster">Hamster</option>
+                        <option value="Tortuga">Tortuga</option>
+                        <option value="Pájaro">Pájaro</option>
+                        <option value="Conejo">Conejo</option>
+                        <option value="Reptil">Reptil</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editTamano">Tamaño:</label>
+                    <select id="editTamano" name="tamaño" required>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editSexo">Sexo:</label>
+                    <select id="editSexo" name="sexo" required>
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editDescripcion">Descripción:</label>
+                    <textarea id="editDescripcion" name="descripcion" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editEstado">Estado:</label>
+                    <select id="editEstado" name="estado" required>
+                        <option value="en_proceso">En proceso</option>
+                        <option value="adoptado">Adoptado</option>
+                        <option value="disponible">Disponible</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editImagen">Nueva Imagen (opcional):</label>
+                    <input type="file" id="editImagen" name="imagen" accept="image/*">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                    <button type="button" class="btn-cancel" id="cancelEdit">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Eliminación</h2>
+            <p>¿Estás seguro de que deseas eliminar esta mascota? Esta acción no se puede deshacer.</p>
+            <div class="form-actions">
+                <button type="button" class="btn-confirm" id="confirmDelete">Eliminar</button>
+                <button type="button" class="btn-cancel" id="cancelDelete">Cancelar</button>
+            </div>
+        </div>
     </div>
 
     <script src="adoptar_admin.js"></script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,10 @@
 
 <body>
     <petlink-header></petlink-header>
-    
+
     <main class="form-container">
         <h1 class="form-title">Formulario para registrar Mascotas</h1>
-        
+
         <form class="pet-form">
             <div class="form-grid">
                 <!-- Primera fila -->
@@ -23,12 +24,12 @@
                     <label for="pet-name">Nombre:</label>
                     <input type="text" id="pet-name" placeholder="Ej: Luna" required>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="pet-species">Especie:</label>
                     <input type="text" id="pet-species" placeholder="Ej: Perro, Gato" required>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="pet-gender">Sexo:</label>
                     <select id="pet-gender" required>
@@ -37,13 +38,13 @@
                         <option>Hembra</option>
                     </select>
                 </div>
-                
+
                 <!-- Segunda fila -->
                 <div class="input-group">
                     <label for="pet-weight">Peso (kg):</label>
                     <input type="number" id="pet-weight" placeholder="Ej: 4.5" step="0.1" min="0" required>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="pet-size">Tamaño:</label>
                     <select id="pet-size" required>
@@ -53,7 +54,7 @@
                         <option>Grande</option>
                     </select>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="pet-sterilized">Esterilizado:</label>
                     <select id="pet-sterilized" required>
@@ -62,7 +63,7 @@
                         <option>No</option>
                     </select>
                 </div>
-                
+
                 <!-- Tercera fila -->
                 <div class="input-group">
                     <label for="pet-disabled">Discapacitado:</label>
@@ -72,7 +73,7 @@
                         <option>No</option>
                     </select>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="pet-dewormed">Desparasitado:</label>
                     <select id="pet-dewormed" required>
@@ -81,13 +82,14 @@
                         <option>No</option>
                     </select>
                 </div>
-                
+
                 <div class="input-group">
-                    <label for="pet-vaccinated">Vacunado:</label>
+                    <label for="pet-vaccinated">Vacunas:</label>
                     <select id="pet-vaccinated" required>
                         <option value="" disabled selected>Selecciona una opción</option>
-                        <option>Sí</option>
-                        <option>No</option>
+                        <option>Completas</option>
+                        <option>Incompletas</option>
+                        <option>Ninguna</option>
                     </select>
                 </div>
             </div>
@@ -95,7 +97,9 @@
             <!-- Descripción -->
             <div class="input-group full-width">
                 <label for="pet-description">Descripción de la mascota:</label>
-                <textarea id="pet-description" placeholder="Describe su personalidad, características físicas, comportamiento..." required></textarea>
+                <textarea id="pet-description"
+                    placeholder="Describe su personalidad, características físicas, comportamiento..."
+                    required></textarea>
             </div>
 
             <!-- Fotos -->
@@ -125,5 +129,7 @@
             </div>
         </form>
     </main>
+    <script src="formularioregistrar.js"></script>
 </body>
+
 </html>

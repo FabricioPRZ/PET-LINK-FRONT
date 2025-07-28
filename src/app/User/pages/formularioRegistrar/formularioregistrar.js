@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('vacunas', vacunado);
             formData.append('descripcion', descripcion);
             formData.append('idCedente', userId);
-            formData.append('estado', 'pendiente');
+            formData.append('estado', 'disponible');
 
             // Añadir imágenes al FormData
             imageFiles.forEach((file, index) => {

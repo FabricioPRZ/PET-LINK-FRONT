@@ -1,5 +1,3 @@
-// solicitudesadopcion.js
-
 // URL del endpoint
 const API_URL = 'http://44.208.231.53:7078/solicitudes-adopcion';
 
@@ -53,6 +51,7 @@ async function cargarSolicitudes() {
         }
         
         const solicitudes = await response.json();
+        console.log('Solicitudes cargadas:', solicitudes);
         
         // Limpiar tabla
         tbody.innerHTML = '';
@@ -73,6 +72,10 @@ async function cargarSolicitudes() {
             // Obtener información de la mascota
             const especieMascota = await obtenerNombreMascota(solicitud.mascotaId);
             
+            // Obtener el ID correcto (probamos varios posibles campos)
+            const solicitudId = solicitud.id || solicitud.solicitudId || solicitud.ID || solicitud._id;
+            console.log(`ID obtenido para solicitud ${i}:`, solicitudId);
+            
             fila.innerHTML = `
                 <td>${i + 1}</td>
                 <td>${solicitud.correo}</td>
@@ -88,10 +91,10 @@ async function cargarSolicitudes() {
                     <button class="btn-ver" onclick="verDetalle(${i})" style="background-color: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-right: 5px;">
                         Ver
                     </button>
-                    <button class="btn-aprobar" onclick="cambiarEstado(${solicitud.adoptanteId}, ${solicitud.mascotaId}, 'aprobada')" style="background-color: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-right: 5px;" ${solicitud.estadoSolicitud !== 'pendiente' ? 'disabled' : ''}>
+                    <button class="btn-aprobar" onclick="cambiarEstado(${solicitudId}, 'aprobada', ${i})" style="background-color: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-right: 5px;" ${solicitud.estadoSolicitud !== 'pendiente' ? 'disabled' : ''}>
                         Aprobar
                     </button>
-                    <button class="btn-rechazar" onclick="cambiarEstado(${solicitud.adoptanteId}, ${solicitud.mascotaId}, 'rechazada')" style="background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;" ${solicitud.estadoSolicitud !== 'pendiente' ? 'disabled' : ''}>
+                    <button class="btn-rechazar" onclick="cambiarEstado(${solicitudId}, 'rechazada', ${i})" style="background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;" ${solicitud.estadoSolicitud !== 'pendiente' ? 'disabled' : ''}>
                         Rechazar
                     </button>
                 </td>
@@ -109,7 +112,7 @@ async function cargarSolicitudes() {
     }
 }
 
-// Función ACTUALIZADA para ver detalle de solicitud
+// Función para ver detalle de solicitud
 function verDetalle(index) {
     const solicitud = window.solicitudesData[index];
     
@@ -120,14 +123,27 @@ function verDetalle(index) {
     window.location.href = '../solicitudAdopcion/Solicitud_adopcion.html';
 }
 
-// Función para cambiar estado de solicitud
-async function cambiarEstado(adoptanteId, mascotaId, nuevoEstado) {
+// Función para cambiar estado de solicitud (versión corregida)
+async function cambiarEstado(solicitudId, nuevoEstado, index) {
+    // Validaciones iniciales
+    if (!solicitudId || isNaN(solicitudId)) {
+        console.error('ID inválido:', solicitudId);
+        alert('Error: ID de solicitud no válido o faltante');
+        return;
+    }
+    
     if (!confirm(`¿Está seguro de ${nuevoEstado === 'aprobada' ? 'aprobar' : 'rechazar'} esta solicitud?`)) {
         return;
     }
     
     try {
-        const response = await fetch(`${API_URL}/${adoptanteId}/${mascotaId}`, {
+        // Convertir a número (por si viene como string)
+        const idNumerico = Number(solicitudId);
+        
+        console.log(`[DEBUG] Enviando PUT a: ${API_URL}/${idNumerico}`);
+        console.log(`[DEBUG] ID numérico enviado:`, idNumerico);
+        
+        const response = await fetch(`${API_URL}/${idNumerico}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -137,16 +153,52 @@ async function cambiarEstado(adoptanteId, mascotaId, nuevoEstado) {
             })
         });
         
+        console.log(`[DEBUG] Respuesta del servidor: ${response.status}`);
+        
         if (response.ok) {
             alert(`Solicitud ${nuevoEstado} correctamente`);
+            // Actualizar el estado en los datos locales
+            if (window.solicitudesData && window.solicitudesData[index]) {
+                window.solicitudesData[index].estadoSolicitud = nuevoEstado;
+            }
             cargarSolicitudes(); // Recargar la tabla
         } else {
-            throw new Error('Error al actualizar el estado');
+            const errorData = await response.json();
+            console.error('[DEBUG] Error detallado:', errorData);
+            
+            // Mensaje más amigable para el usuario
+            let mensajeError = 'Error al actualizar el estado';
+            if (errorData.error) {
+                mensajeError += `: ${errorData.error}`;
+            }
+            
+            throw new Error(mensajeError);
         }
         
     } catch (error) {
         console.error('Error al cambiar estado:', error);
-        alert('Error al actualizar el estado de la solicitud');
+        alert(error.message);
+    }
+}
+
+// Función alternativa si el backend espera el ID en el body
+async function cambiarEstadoAlternativo(solicitudId, nuevoEstado, index) {
+    try {
+        const response = await fetch(API_URL, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: Number(solicitudId),
+                estadoSolicitud: nuevoEstado
+            })
+        });
+        
+        // Resto del código igual que en cambiarEstado()
+    } catch (error) {
+        console.error('Error en método alternativo:', error);
+        alert('Error al actualizar (método alternativo)');
     }
 }
 
